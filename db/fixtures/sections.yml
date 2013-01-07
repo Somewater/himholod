@@ -1,0 +1,161 @@
+main:
+  parent_id: 0
+  name: 'main'
+  title: Главная
+
+##############
+#
+#  MAIN SECTIONS
+#
+##############
+
+refrigerating-equipment:
+  parent: main
+  name: 'refrigerating-equipment'
+  weight: 0
+  title: Холодильное оборудование
+
+contacts:
+  parent: main
+  name: 'contacts'
+  weight: 10
+  title: Наши координаты
+
+about:
+  parent: main
+  name: 'about'
+  weight: 20
+  title: О компании
+
+production:
+  parent: main
+  name: 'production'
+  weight: 30
+  title: Производство
+
+activity-direction:
+  parent: main
+  name: 'activity-direction'
+  weight: 40
+  title: Направления деятельности
+
+project:
+  parent: main
+  name: 'project'
+  weight: 50
+  title: Проект
+
+technology:
+  parent: main
+  name: 'technology'
+  weight: 60
+  title: Технические решения
+
+services:
+  parent: main
+  name: 'services'
+  weight: 70
+  title: Сервисное обслуживание
+
+vacancy:
+  parent: main
+  name: 'vacancy'
+  weight: 80
+  title: Вакансии компании
+
+useful-info:
+  parent: main
+  name: 'useful-info'
+  weight: 90
+  title: Полезная информация
+
+reference-list:
+  parent: main
+  name: 'reference-list'
+  weight: 110
+  title: Референц-лист проектов
+
+sale:
+  parent: main
+  name: 'sale'
+  weight: 120
+  title: Распродажа!!!
+
+sitemap:
+  parent: main
+  name: 'sitemap'
+  weight: 130
+  title: Карта сайта
+
+info:
+  parent: main
+  name: 'info'
+  weight: 140
+  title: Информация
+
+refrigerating-container:
+  parent: main
+  name: 'refrigerating-container'
+  weight: 150
+  title: Холодильные установки контейнерного типа
+
+
+##################
+#
+#  ABOUT SUBMENUS
+#
+###################
+
+company:
+  parent: about
+  name: 'company'
+  weight: 0
+  title: О компании
+
+press:
+  parent: about
+  name: 'press'
+  weight: 10
+  title: Публикации в прессе
+
+qa-system:
+  parent: about
+  name: 'qa-system'
+  weight: 20
+  title: Система менеджмента и качества
+
+##################
+#
+#  activity-direction SUBMENUS
+#
+###################
+
+sport-buildings:
+  parent: activity-direction
+  name: 'sport-buildings'
+  weight: 0
+  title: Спортивные сооружения
+
+industrial-project:
+  parent: activity-direction
+  name: 'industrial-project'
+  weight: 10
+  title: Объекты общепромышленного характера
+
+##################
+#
+#  TECHNOLOGY SUBMENUS
+#
+###################
+
+energy-saving:
+  parent: technology
+  name: 'energy-saving'
+  weight: 0
+  title: Энергосберегающие технологии
+
+mobile-coolers:
+  parent: technology
+  name: 'mobile-coolers'
+  weight: 10
+  title: Мобильные холодильные установки контейнерного типа

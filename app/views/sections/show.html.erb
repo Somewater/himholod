@@ -1,1 +1,6 @@
 <p><%= @section.title %></p>
+<ul>
+    <% @section.children.each do |child| %>
+        <li><a href="<%= section_path(child) %>"><%= child.title %></a></li>
+    <% end %>
+</ul>
