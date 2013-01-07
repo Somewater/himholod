@@ -41,10 +41,11 @@
 
     <ul class="breadcrumb">
         <% (@section.parents << @section).each do |section| %>
-            <li><a href="<%= section_path(section) %>"><%= section.title %></a> <span class="divider">/</span></li>
-        <% end %>
-        <% if @content %>
-            <li class="active"><%= @content.title %></li>
+            <% if @section == section %>
+                <li class="active"><%= section.title %></li>
+            <% else %>
+                <li><a href="<%= section_path(section) %>"><%= section.title %></a> <span class="divider">/</span></li>
+            <% end %>
         <% end %>
     </ul>
 </div>
