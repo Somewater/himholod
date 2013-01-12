@@ -39,6 +39,18 @@ class SearchController < ApplicationController
       end
       @path
     end
+
+    def type
+      unless @type
+        @type = case(@model)
+                  when TextPage
+                   'search.types.pages'
+                  else
+                    'Undefined'
+                end
+      end
+      @type
+    end
   end
 
   def search_words
@@ -53,6 +65,7 @@ class SearchController < ApplicationController
     else
       # array of SearchResult
       @results = []
+      @results_by_type = {}
       #Product::Translation.where(['CONCAT(description,title) LIKE ("%?%")', word])
 
       translations = []
@@ -79,8 +92,13 @@ class SearchController < ApplicationController
         # всё хорошо
         translations_uniq.slice(0,20).each do |translation|
           model_class, translated_fields = translated_class_to_fields[translation.class]
-          @results << SearchResult.new(translation, translated_fields, self)
+          s = SearchResult.new(translation, translated_fields, self)
+          @results << s
+          @results_by_type[s.type] = [] unless @results_by_type[s.type]
+          @results_by_type[s.type] << s
         end
+
+
       end
     end
   end

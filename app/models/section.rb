@@ -31,6 +31,17 @@ class Section < ActiveRecord::Base
     result
   end
 
+  def chain(main = false)
+    # цепочка от родителей до указанной секции (исключая главную секцию)
+    result = [self]
+    p = self.parent
+    while(p && (main || !p.main?))
+      result.unshift(p)
+      p = p.parent
+    end
+    result
+  end
+
   def children
     Section.find_all_by_parent_id(self.id, :order => Section::ORDER) || []
   end

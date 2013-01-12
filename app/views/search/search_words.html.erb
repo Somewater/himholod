@@ -1,19 +1,31 @@
 <div class="row">
     <form action="/search" class="navbar-search">
-        <input name="wordsline" type="text" placeholder="<%= I18n.t('search.site_search') %>" class="search-query span10" value="<%= @query %>">
+        <input name="wordsline" type="text" placeholder="<%= I18n.t('search.site_search') %>" class="search-query span10" value="<%= @query %>" size="60">
         <input type="submit" value="<%= I18n.t('search.button') %>" onclick="this.form.searchline.focus();" />
     </form>
 </div>
 <p></p>
-<div class="row">
-    <ol>
-        <% @results.each_with_index do |result, index| %>
-            <li>
-                <a href="<%= result.path %>">
-                    <%= result.title %>
-                </a>
-                <p><%= truncate(strip_tags(result.description), :length => 400, :separator => ' ') %></p>
-            </li>
-        <% end %>
-    </ol>
-</div>
+<% @results_by_type.each do |type_name, results| %>
+    <div class="row">
+        <span class="headers1"><%= I18n.t(type_name) %></span>
+        <ol>
+            <% results.each_with_index do |result, index| %>
+                <li>
+                    <% case result.model %>
+                    <% when TextPage %>
+                        <% each_with_borders(result.model.section.chain) do |section, index, last| %>
+                            <a href="<%= section_path(section) %>"><%= section.title %></a>
+                            <% unless last %><img src="/imp/bulletgradusnext.gif"><% end %>
+                        <% end %>
+                        <br>
+                        <a href="<%= result.path %>"><b><%= result.title %></b></a>
+                    <% when TextPage %>
+                        <a href="index.php?page=107" class="bs">10/02/2009 17:38:46&nbsp;&nbsp;<b>Крытая тренировочная площадка с искусственным льдом по ул. 25 сентября, г.Смоленск, 2008г.</b></a>
+                    <% else %>
+                        UNDEFINED TYPE
+                    <% end %>
+                </li>
+            <% end %>
+        </ol>
+    </div>
+<% end %>
