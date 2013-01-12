@@ -1,107 +1,290 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-  <title>Himholod</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+    <META HTTP-EQUIV="Content-Type" content="text/html; charset=utf-8">
+    <title>Главный заголовок</title>
+    <meta name=keywords content="">
+    <meta name=description content="">
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
 </head>
-<body>
+<body leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0" bgcolor="#ffffff" marginheight="0" marginwidth="0">
+<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+<tbody>
+<tr>
+    <td height="27" valign="top">
+        <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#525252" height="27">
+            <tbody><tr>
+                <td width="116"><a href="/"><img width="116" border="0" height="27" alt="На главную" src="imp/onmain.gif"></a></td><td width="50">&nbsp;</td><td width="175"><a href="/"><img width="74" border="0" height="27" alt="" src="imp/rus.gif"></a><a href="/"><img width="101" border="0" height="27" alt="" src="imp/eng.gif"></a></td><td>&nbsp;</td>
+            </tr>
+            </tbody></table>
+    </td>
+</tr>
 
-<div class="navbar">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="brand" href="/">ХИМХОЛОДСЕРВИС</a>
-            <div class="navbar-content">
-                <ul class="nav">
-                    <li class="active">
-                        <a href="/">Rus</a>
-                    </li>
-                    <li>
-                        <a href="/">Eng</a>
-                    </li>
-                </ul>
-            </div>
-            <form action="/search" class="navbar-search pull-right">
-                <input name="words" type="text" placeholder="<%= I18n.t('search.site_search') %>" class="search-query span2">
-            </form>
+<tr>
+    <td height="156" valign="top"><!-- MAP and F-->
+        <table background="imp/background2.jpg" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tbody><tr>
+                <td align="left" valign=bottom><a href="/"><img src="imp/logo.gif" alt="НПФ Химхолодсервис" border="0"></a></td>
+                <td width=100% align="left">&nbsp;</td>
+                <td style="background-image: url(/imp/mapfon.jpg) bottom left repeat-x">
+                    <table  border="0" cellpadding="0" cellspacing="0">
+                        <form method=post action="index.php?chp=search">
+                            <tr><td rowspan="5" width="25">&nbsp;</td>
+                                <td colspan="2" height="50">&nbsp;</td></tr>
+                            <tr><td colspan="2" height="15" valign="top"><img src="imp/searchonsite.gif" alt="" border="0" height="15" width="82"></td></tr>
+                            <tr><td height="27" width="126"><input size="17" style="border-color: rgb(128, 158, 184); border-width: 1px; height: 22px;" type="text" name=sstr></td><td><input type=image src="imp/bulletform.gif" alt="" border="0" height="27" width="37"></td></tr>
+                            <tr><td colspan="2" height="18" valign="top"></td></tr>
+                            <tr><td colspan="2">&nbsp;</td></tr>
+                        </form>
+                    </table>
+                </td></tr>
+            </tbody>
+        </table>
+    </td>
+</tr>
 
-            <ul class="nav pull-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Профиль<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/admin">Войти на сайт</a></li>
-                        <li class="divider"></li>
-                        <li><a href="<%= destroy_admin_user_session_path %>">Выход</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
+<tr>
+    <td height="175" valign="top">
+        <table background="imp/fonviolet.gif" border="0" cellpadding="0" cellspacing="0" height="175" width="100%">
+            <tbody><tr>
+                <td width="730"><table background="imp/fonpodlozhka.jpg" border="0" cellpadding="0" cellspacing="0" height="175" width="730"><tbody><tr><td><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" id="ice3" align="" height="175" width="730"><param name="movie" value="ice3.swf"> <param name="quality" value="high"> <param name="wmode" value="transparent"> <param name="bgcolor" value="#FFFFFF"> <embed src="imp/ice3.swf" quality="high" wmode="transparent" bgcolor="#FFFFFF" name="ice3" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" align="" height="175" width="730"></object>
+                </td></tr></tbody></table></td>
 
-    <ul class="breadcrumb">
-        <% (@section.parents << @section).each do |section| %>
-            <% if @section == section %>
-                <li class="active"><%= section.title %></li>
-            <% else %>
-                <li><a href="<%= section_path(section) %>"><%= section.title %></a> <span class="divider">/</span></li>
-            <% end %>
-        <% end %>
-    </ul>
+                <td align="left" width="100%">
+                </td>
+                <td width="271"><div style="background-image: url(/imp/fontitlewithskala_about.jpg);">
+                    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" id="header_company_skala" align="" height="175" width="271">
+                    <param name="movie" value="/header_company_skala.swf"> <param name="quality" value="high"> <param name="wmode" value="transparent"> <param name="bgcolor" value="#FFFFFF"> <embed src="imp/header_company_skala.swf" quality="high" wmode="transparent" bgcolor="#FFFFFF" name="header_company_skala" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" align="" height="175" width="271">
+                </object></div>
+                </td>
+            </tr>
+            </tbody></table>
+
+    </td>
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+<td valign="top"><!-- МЕНЮ -->
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td height="100%" valign="top" width="240">
+
+    <table style="background-position: right bottom; background-repeat: no-repeat;" background="imp/background_menu_circles.jpg" border="0" cellpadding="0" cellspacing="0" height="100%" width="240">
+        <tbody><tr>
+            <td valign="top">
+                <table border="0" cellpadding="0" cellspacing="0" width="240">
+                    <tbody><tr><td valign="top">
+
+                        <div id="masterdiv" style="width: 240px;">
+                            <img src="/imp/conerleftup.gif" alt="" border="0" height="58" width="240">
+
+                            <div class="menutitle" onclick="SwitchMenu('sub69')">
+                                <table border="0" cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img src="imp/menunotchosen.jpg" alt="" name="menuimg_2" border="0" height="29" width="50">
+                                            </td>
+                                            <td>
+                                                <a href="javascript:void()" onmouseover="menuimg_2.src='imp/menunotchosen1.jpg';"
+                                                   onmouseout="menuimg_2.src='imp/menunotchosen.jpg';" class="menu">Направления деятельности</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <span class="submenu" id="sub69">
+                                <table border="0" cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img src="imp/menusub.jpg" alt="" border="0" height="29" width="39">
+                                            </td>
+                                            <td>
+                                                <a href="index.php?mid=209" class="submenu1">Спортивные сооружения</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table border="0" cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="imp/menusub.jpg" alt="" border="0" height="29" width="39">
+                                        </td>
+                                        <td>
+                                            <a href="index.php?mid=210" class="submenu1">Объекты общепромышленного характера</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </span>
+
+                            <div class="menutitle" onclick="SwitchMenu('sub212')">
+                                <table border="0" cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="imp/menunotchosen.jpg" alt="" name="menuimg_2" border="0" height="29" width="50">
+                                        </td>
+                                        <td>
+                                            <a href="index.php?mid=212" onmouseover="menuimg_2.src='imp/menunotchosen1.jpg';" onmouseout="menuimg_2.src='imp/menunotchosen.jpg';" class="menu">Проект</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <span class="submenu" id="sub212"></span>
+                        </div>
+                    </td></tr></tbody></table>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td align="right" valign="bottom"><!-- FLASH - BOTTOM KARTA WITH RADAR --><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" id="background_menu_circles" align="" height="200" width="240"><param name="movie" value="/background_menu_circles.swf"> <param name="quality" value="high"> <param name="bgcolor" value="#FFFFFF"> <embed src="imp/background_menu_circles.swf" quality="high" bgcolor="#FFFFFF" name="background_menu_circles" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" align="" height="200" width="240">
+            </object></td>
+        </tr>
+
+        </tbody></table>
+
+
+</td>
+
+
+
+<td height="100%" valign="top" width="100%">
+    <table style="background-position: left top; background-repeat: repeat-y;" background="imp/fontext.gif" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+        <tbody><tr>
+            <td>
+                <table style="background-position: center bottom; background-repeat: repeat-x;" background="imp/fontextbottom.gif" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+                    <tbody><tr><td valign="top">
+
+                        <table style="background-position: left bottom; background-repeat: no-repeat;" background="imp/background_text_bottomcircles.gif" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+                            <tbody><tr><td height="100%" valign="top">
+
+                                <!-- gradusnik and header of page -->
+                                <table background="imp/fontitlepart1.gif" border="0" cellpadding="0" cellspacing="0" height="93" width="100%">
+                                    <tbody><tr><td valign="top"><table style="background-position: left center; background-repeat: no-repeat;" background="imp/fontitlepart.gif" border="0" cellpadding="0" cellspacing="0" height="93" width="100%">
+                                        <tbody><tr>
+                                            <td height="93" valign="top" width="100%">
+                                                <div style="position: relative; height: 50px; top: 30px; left: 40px;">
+                                                    <a href="/" class=search>Главная</a>&nbsp;
+
+                                                    <img src="imp/bulletgradusnext.gif" width=8 height=7 border=0>&nbsp; <a href="index.php?mid=68" class=search>О компании</a> &nbsp;
+
+                                                    <img src="imp/bulletgradusnext.gif" width=8 height=7 border=0>&nbsp; <a href="index.php?mid=80" class=search>Добро пожаловать!</a> &nbsp;
+
+
+                                                </div>
+                                            </td>
+                                            <td width="75">
+                                                <div style="background-image: url(/imp/fontitlepart2print.gif); width: 75px; height: 93px;">
+                                                    <div style="position: relative; top: 25px; left: 5px;">
+                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                            <tbody><tr>
+                                                                <td>
+                                                                    <a href="center.php?mid=80&newwin=1" class="search" style="color: rgb(148, 147, 147);">Печать</a>&nbsp;
+                                                                </td>
+                                                                <td>
+                                                                    <a href="center.php?mid=80&newwin=1"><img src="imp/iconprint.gif" alt="" border="0" height="23" width="25"></a>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody></table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr></tbody></table>
+                                    </td></tr></tbody></table>
+
+
+                                <table cellpading="0" border="0" cellspacing="0" height="400" width="100%">
+
+                                    <tbody><tr><td colspan="2" height="20"></td></tr>
+                                    <tr>
+                                        <td width="40"></td>
+                                        <td align="justify" height="100%" valign="top">
+                                            <%= yield %>
+                                        </td>
+                                    </tr></tbody></table>
+                            </td></tr></tbody></table></td>
+
+
+                        <td valign="top" width="254"> <!-- Anonce-->
+                            <!-- FLASH - UPPER KARTA WITH RADAR --><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" id="kartaright" align="" height="193" width="254"><param name="movie" value="/kartaright.swf"> <param name="quality" value="high"> <param name="bgcolor" value="#FFFFFF"> <embed src="imp/kartaright.swf" quality="high" bgcolor="#FFFFFF" name="kartaright" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" align="" height="193" width="254"></object>
+                            <br>
+
+                            <table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td valign="top">
+
+
+                                <table border="0" cellpadding="5" cellspacing="0" width="254">
+                                    <tbody>
+                                    <tr><td colspan="2"><img src="imp/newsfirst.gif" border="0" vspace="3"></td></tr>
+
+                                    <tr><td><img style="border: 1px solid rgb(96, 96, 96);" src="/imp/news_marker.gif"></td></tr>
+                                    <tr><td style="font-size: 7pt; color: rgb(80, 80, 80);">16/01/2009 17:28 <a class=search style="text-decoration:none" href=index.php?page=106><FONT color=#663399 size=2><STRONG>Дворец Спорта-школа высшего олимпийского мастерства под руководством Е.А.Чайковской, г.Москва, р-он Строгино,пуск 2009г.</STRONG></FONT>
+                                        <P></P><a></td></tr>
+
+                                    </tbody>
+                                </table>
+                            <br>
+                        </td>
+                        <td width="5">&nbsp;<!-- margin from right side --></td>
+                    </tr></table>
+            </td>
+        </tr></tbody></table>
+</td></tr></tbody></table>
+
+
+
+</td></tr></tbody></table>
+
+</td>
+
+
+</tr>
+
+
+
+
+<tr>
+    <td height="66">
+
+        <table background="imp/fonbottom.gif" border="0" cellpadding="0" cellspacing="0" height="66" width="100%">
+            <tbody><tr>
+                <td align="center" width="240"><div class="copyright">Copyright © <a href="/" class="copyright">ХимХолодСервис</a> 1998-2007<br></div></td>
+                <td>&nbsp;</td>
+                <td align="center" width="306"><!-- Yandex.Metrika -->
+                    <script src="//mc.yandex.ru/resource/watch.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                        try { var yaCounter233175 = new Ya.Metrika(233175); } catch(e){}
+                    </script>
+                    <noscript><div style="position: absolute;"><img src="//mc.yandex.ru/watch/233175" alt="" /></div></noscript>
+                    <!-- /Yandex.Metrika --></td>
+            </tr>
+            </tbody></table>
+
+    </td>
+</tr>
+
+</tbody></table>
+
+
+<div style="position: absolute; left: 20px; top: 167px;">
+    <img src="imp/hhsline.gif" border="0">
 </div>
 
-
-
-<div class="container-fluid">
-	<% unless notice.blank? %>
-		<div class="alert alert-success">
-			<a class="close" data-dismiss="alert">?</a>
-			<span><%= notice %></span>
-		</div>
-	<% end %>
-
-	<% unless alert.blank? %>
-		<div class="alert alert-danger">
-			<a class="close" data-dismiss="alert">?</a>
-			<span><%= alert %></span>
-		</div>
-	<% end %>
-
-	<div id="page" class="row-fluid">
-        <div class="span3">
-            <ul>
-                <% selected_sections = (@section.parents << @section)
-                   Section.tree.each do |section| %>
-                    <% if @section == section %>
-                        <li class="active"><%= section.title %></li>
-                    <% else %>
-                        <li><a href="<%= section_path(section) %>"><%= section.title %></a></li>
-                    <% end %>
-                    <% if selected_sections.index(section) %>
-                        <% children = section.children
-                           if children.length > 0 %>
-                            <ul>
-                                <% children.each do |child| %>
-                                    <% if @section == child %>
-                                        <li class="active"><%= child.title %></li>
-                                    <% else %>
-                                        <li><a href="<%= section_path(child) %>"><%= child.title %></a></li>
-                                    <% end %>
-                                <% end %>
-                            </ul>
-                        <% end %>
-                    <% end %>
-                <% end %>
-            </ul>
-        </div>
-        <div class="span9">
-		    <%= yield %>
-        </div>
-	</div>
-</div>
-
-<div class="well">
-    <p class="muted">Copyright © ХимХолодСервис 1998-2007</p>
-</div>
 </body>
 </html>
