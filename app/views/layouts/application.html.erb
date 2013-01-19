@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
     <META HTTP-EQUIV="Content-Type" content="text/html; charset=utf-8">
@@ -17,12 +17,25 @@
         <div class="onmain">
         <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#525252" height="27">
             <tbody><tr style="height: 27px; max-height: 27px;">
-                <td width="116" style="height: 27px"><a href="/"><span class="toplink"><%= I18n.t('onmain') %></span><img width="116" border="0" height="27" alt="На главную" src="/imp/onmain.gif"></a></td>
+                <td width="116" style="height: 27px"><a href="/"><span class="toplink"><%= I18n.t('onmain') %></span>
+                    <img width="116" border="0" height="27" alt="На главную" src="/imp/onmain.gif"></a></td>
                 <td width="50">&nbsp;</td>
                 <td width="240">
                     <div style="position: relative;">
-                        <a href="/">
-                        <span class="lang lang1">Рус</span><img width="74" border="0" height="27" alt="" src="/imp/rus.gif"></a><a href="/"><span class="lang lang2">Рус2</span><img width="65" border="0" height="27" alt="" src="/imp/middle.gif"></a><a href="/"><span class="lang lang3">Рус3</span><img width="101" border="0" height="27" alt="" src="/imp/eng.gif"></a>
+                        <%
+                           # locales
+                           bold = ' style="font-weight: bold;"'.html_safe
+                           lang1 = I18n.t('locales.ru')
+                           lang1_url = url_for_params(:locale => :ru)
+                           lang1_s = I18n.locale.to_s == 'ru' ? bold : ''
+                           lang2 = I18n.t('locales.en')
+                           lang2_url = url_for_params(:locale => :en)
+                           lang2_s = I18n.locale.to_s == 'en' ? bold : ''
+                           lang3 = I18n.t('locales.fr')
+                           lang3_url = url_for_params(:locale => :fr)
+                           lang3_s = I18n.locale.to_s == 'fr' ? bold : ''
+                        %>
+                        <a href="<%= lang1_url %>"><span class="lang lang1"<%= lang1_s %>><%= lang1 %></span><img width="74" border="0" height="27" alt="" src="/imp/rus.gif"></a><a href="<%= lang2_url %>"><span class="lang lang2"<%= lang2_s %>><%= lang2 %></span><img width="65" border="0" height="27" alt="" src="/imp/middle.gif"></a><a href="<%= lang3_url %>"><span class="lang lang3"<%= lang3_s %>><%= lang3 %></span><img width="101" border="0" height="27" alt="" src="/imp/eng.gif"></a>
                     </div>
                 </td>
                 <td>&nbsp;</td>
@@ -33,22 +46,22 @@
 </tr>
 
 <tr>
-    <td height="156" valign="top"><!-- MAP and F-->
+    <td height="156" valign="top">
         <table background="/imp/background2.jpg" border="0" cellpadding="0" cellspacing="0" width="100%">
             <tbody><tr>
-                <td align="left" valign=bottom><a href="/"><img src="/imp/logo.gif" alt="НПФ Химхолодсервис" border="0"></a></td>
+                <td align="left" valign=bottom><img src="/imp/logo_<%= I18n.locale %>.gif" alt="<%= I18n.t('name') %>" border="0"></td>
                 <td width=100% align="left">&nbsp;</td>
                 <td style="background-image: url(/imp/mapfon.jpg) bottom left repeat-x">
                     <table  border="0" cellpadding="0" cellspacing="0">
                         <form method=post action="/search">
                             <tr><td rowspan="5" width="25">&nbsp;</td>
                                 <td colspan="2" height="50">&nbsp;</td></tr>
-                            <tr><td colspan="2" height="15" valign="top"><img src="/imp/searchonsite.gif" alt="" border="0" height="15" width="82"></td></tr>
+                            <tr><td colspan="2" height="15" valign="top">
+                                <span style="font-size: 12px; font-weight: bold;"><%= I18n.t('search.site_search') %></span></td></tr>
                             <tr><td height="27" width="126">
                                 <input size="17" style="border-color: rgb(128, 158, 184); border-width: 1px; height: 22px;" name="words" type="text"></td><td>
                                 <input type=image src="/imp/bulletform.gif" alt="" border="0" height="27" width="37"></td></tr>
                             <tr><td colspan="2" height="18" valign="top"></td></tr>
-                            <tr><td colspan="2">&nbsp;</td></tr>
                         </form>
                     </table>
                 </td></tr>
@@ -70,25 +83,12 @@
                     <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" id="header_company_skala" align="" height="175" width="271">
                     <param name="movie" value="/header_company_skala.swf"> <param name="quality" value="high"> <param name="wmode" value="transparent"> <param name="bgcolor" value="#FFFFFF"> <embed src="/imp/header_company_skala.swf" quality="high" wmode="transparent" bgcolor="#FFFFFF" name="header_company_skala" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" align="" height="175" width="271">
                 </object></div>
-                </td>
-            </tr>
+                </td></tr>
             </tbody></table>
-
     </td>
 </tr>
-
-
-
-
-
-
-
-
-
 <tr>
-<td valign="top"><!-- МЕНЮ -->
-
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<td valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
 <tbody><tr>
 <td height="100%" valign="top" width="240">
 
@@ -232,12 +232,14 @@
                                                 </div>
                                                 <br/>
                                             <% end %>
-                                            <%= yield %>
+                                            <div class="page">
+                                                <%= yield %>
+                                            </div>
                                         </td>
                                     </tr></tbody></table>
                             </td></tr></tbody></table></td>
 
-
+                        <td width="15">&nbsp;<!-- margin --></td>
                         <td valign="top" width="254"> <!-- Anonce-->
                                         <!-- FLASH - UPPER KARTA WITH RADAR --><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" id="kartaright" align="" height="193" width="254"><param name="movie" value="/kartaright.swf"> <param name="quality" value="high"> <param name="bgcolor" value="#FFFFFF"> <embed src="/imp/kartaright.swf" quality="high" bgcolor="#FFFFFF" name="kartaright" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" align="" height="193" width="254"></object>
                                         <br>
@@ -248,7 +250,7 @@
                                             <table border="0" cellpadding="5" cellspacing="0" width="254">
                                                 <% if @section && @section.main? %>
                                                     <tbody>
-                                                    <tr><td colspan="2"><img src="/imp/newsfirst.gif" border="0" vspace="3"></td></tr>
+                                                    <tr><td colspan="2"><span style="font-size: 12px; font-weight: bold;"><%= I18n.t('news_title') %></span></td></tr>
 
                                                     <tr><td><img style="border: 1px solid rgb(96, 96, 96);" src="/imp/news_marker.gif"></td></tr>
                                                     <tr><td style="font-size: 7pt; color: rgb(80, 80, 80);">16/01/2009 17:28 <a class=search style="text-decoration:none" href=index.php?page=106><FONT color=#663399 size=2><STRONG>Дворец Спорта-школа высшего олимпийского мастерства под руководством Е.А.Чайковской, г.Москва, р-он Строгино,пуск 2009г.</STRONG></FONT>
@@ -258,7 +260,6 @@
                                             </table>
                                         <br>
                                     </td>
-                                    <td width="5">&nbsp;<!-- margin from right side --></td>
                                 </tr></tbody></table>
                         </td>
         </tr></tbody></table>
@@ -300,7 +301,7 @@
 
 
 <div style="position: absolute; left: 20px; top: 167px;">
-    <img src="/imp/hhsline.gif" border="0">
+    <img src="/imp/hhsline_<%= I18n.locale %>.gif" border="0">
 </div>
 
 </body>

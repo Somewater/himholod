@@ -1,14 +1,12 @@
 ﻿ru:
   hello: "Hello world"
-  email: naidenova_marina@rambler.ru
-  email_url: 'mailto:naidenova_marina@rambler.ru?subject=%D0%A7%D0%B5%D1%80%D1%82%D0%B5%D0%B6%D0%B8+%D0%B2+Autocad'
-  phone: тел. 8(963) 604-87-38
-  copyright: © 2012 autocad-help.ru
+  name: НПФ Химхолодсервис
   print: Печать
   onmain: На главную
+  news_title: Новости компании
   search:
     button: Поиск
-    site_search: Поиск по сайту
+    site_search: "Поиск по сайту:"
     hint: "поиск..."
     empty_request: Слишком короткий запрос, введите слово, длиной не менее 3 символов
     more_word_request: Слишком длинный запрос, ограничьте поисковую фразу 2-3 словами
@@ -16,3 +14,8 @@
     huge_result: Запросу удовлетворяет большая часть материалов сайта, попробуйте сузить параметры поиска
     types:
       pages: Страницы
+  locales:
+    ru: Рус
+    en: Eng
+    fr: Fr
+

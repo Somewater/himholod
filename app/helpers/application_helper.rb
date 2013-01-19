@@ -24,4 +24,8 @@ module ApplicationHelper
         super
     end
   end
+
+  def url_for_params(params)
+    url_for(params.merge(params))
+  end
 end
