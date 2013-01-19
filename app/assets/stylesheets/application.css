@@ -25,7 +25,7 @@ a:active {font-family:Arial,Tahoma;font-size:12px;color:#604089;text-decoration:
 a:visited {font-family:Arial,Tahoma;font-size:12px;color:#604089;text-decoration:underline}
 a:hover {font-family:Arial,Tahoma;font-size:12px;color:#9174B5;text-decoration:none}
 
-a img {border: none;}
+img {border: none;}
 
 .inactive-ref {font-family:Arial,Tahoma;color:#604089;text-decoration:none}
 
@@ -96,3 +96,33 @@ TD.data3 {font-family:Arial,Tahoma; font-size:11px; color:gray; border-bottom: 1
 
 /* жирные выделения, для частей где расположены контакты консультантов и менеджеров (внизу страниц) */
 b.manager {color: #A07878;}
+
+.toplink{
+    position: absolute;
+    overflow: visible;
+    left: 45px;
+    top: 5px;
+    text-decoration: underline;
+}
+.onmain{
+    overflow: visible;
+}
+.onmain a{color:#FFFFFF;text-decoration: none;}
+.onmain a:active {color:#FFFFFF;text-decoration: none;}
+.onmain a:visited {color:#FFFFFF;text-decoration: none;}
+.onmain a:hover {color:#FFFFFF;text-decoration: none;}
+
+.lang{
+    position: absolute;
+    overflow: visible;
+    top: 3px;
+}
+.lang1{
+    right: 178px;
+}
+.lang2{
+    left: 95px;
+}
+.lang3{
+    left: 150px;
+}

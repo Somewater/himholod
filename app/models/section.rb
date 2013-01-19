@@ -1,5 +1,9 @@
 class Section < ActiveRecord::Base
-  attr_accessible :name, :title, :weight, :visible, :parent_id
+
+  extend ::I18nColumns::Model
+  i18n_columns :title
+
+  attr_accessible :name, :weight, :visible, :parent_id
   belongs_to :parent, :class_name => 'Section'
 
   MAIN_NAME = 'main'

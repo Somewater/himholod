@@ -1,7 +1,9 @@
 main:
   parent_id: 0
   name: 'main'
-  title: Главная
+  title_en: Main
+  title_fr: Main
+  title_ru: Главная
 
 ##############
 #
@@ -13,91 +15,121 @@ refrigerating-equipment:
   parent: main
   name: 'refrigerating-equipment'
   weight: 0
-  title: Холодильное оборудование
+  title_en: Refrigerating equipment
+  title_fr: Refrigerating equipment
+  title_ru: Холодильное оборудование
 
 contacts:
   parent: main
   name: 'contacts'
   weight: 10
-  title: Наши координаты
+  title_en: Contacts
+  title_fr: Contacts
+  title_ru: Наши координаты
 
 about:
   parent: main
   name: 'about'
   weight: 20
-  title: О компании
+  title_en: About
+  title_fr: About
+  title_ru: О компании
 
 production:
   parent: main
   name: 'production'
   weight: 30
-  title: Производство
+  title_en: Production
+  title_fr: Production
+  title_ru: Производство
 
 activity-direction:
   parent: main
   name: 'activity-direction'
   weight: 40
-  title: Направления деятельности
+  title_en: Activity direction
+  title_fr: Activity direction
+  title_ru: Направления деятельности
 
 project:
   parent: main
   name: 'project'
   weight: 50
-  title: Проект
+  title_en: Project
+  title_fr: Project
+  title_ru: Проект
 
 technology:
   parent: main
   name: 'technology'
   weight: 60
-  title: Технические решения
+  title_en: Technology
+  title_fr: Technology
+  title_ru: Технические решения
 
 services:
   parent: main
   name: 'services'
   weight: 70
-  title: Сервисное обслуживание
+  title_en: Services
+  title_fr: Services
+  title_ru: Сервисное обслуживание
 
 vacancy:
   parent: main
   name: 'vacancy'
   weight: 80
-  title: Вакансии компании
+  title_en: Vacancy
+  title_fr: Vacancy
+  title_ru: Вакансии компании
 
 useful-info:
   parent: main
   name: 'useful-info'
   weight: 90
-  title: Полезная информация
+  title_en: Useful info
+  title_fr: Useful info
+  title_ru: Полезная информация
 
 reference-list:
   parent: main
   name: 'reference-list'
   weight: 110
-  title: Референц-лист проектов
+  title_en: Reference list
+  title_fr: Reference list
+  title_ru: Референц-лист проектов
 
 sale:
   parent: main
   name: 'sale'
   weight: 120
-  title: Распродажа!!!
+  title_en: Sale!!!
+  title_fr: Sale!!!
+  title_ru: Распродажа!!!
 
 sitemap:
   parent: main
   name: 'sitemap'
   weight: 130
-  title: Карта сайта
+  title_en: Sitemap
+  title_fr: Sitemap
+  title_ru: Карта сайта
 
 info:
   parent: main
   name: 'info'
   weight: 140
-  title: Информация
+  title_en: Info
+  title_fr: Info
+  title_ru: Информация
 
 refrigerating-container:
   parent: main
   name: 'refrigerating-container'
   weight: 150
-  title: Холодильные установки контейнерного типа
+  title_en: Refrigerating container
+  title_fr: Refrigerating container
+  title_ru: Холодильные установки контейнерного типа
 
 
 ##################
@@ -110,19 +142,25 @@ company:
   parent: about
   name: 'company'
   weight: 0
-  title: О компании
+  title_en: Company
+  title_fr: Company
+  title_ru: О компании
 
 press:
   parent: about
   name: 'press'
   weight: 10
-  title: Публикации в прессе
+  title_en: Press
+  title_fr: Press
+  title_ru: Публикации в прессе
 
 qa-system:
   parent: about
   name: 'qa-system'
   weight: 20
-  title: Система менеджмента и качества
+  title_en: QA system
+  title_fr: QA system
+  title_ru: Система менеджмента и качества
 
 ##################
 #
@@ -134,13 +172,17 @@ sport-buildings:
   parent: activity-direction
   name: 'sport-buildings'
   weight: 0
-  title: Спортивные сооружения
+  title_en: Sport buildings
+  title_fr: Sport buildings
+  title_ru: Спортивные сооружения
 
 industrial-project:
   parent: activity-direction
   name: 'industrial-project'
   weight: 10
-  title: Объекты общепромышленного характера
+  title_en: Industrial project
+  title_fr: Industrial project
+  title_ru: Объекты общепромышленного характера
 
 ##################
 #
@@ -152,10 +194,14 @@ energy-saving:
   parent: technology
   name: 'energy-saving'
   weight: 0
-  title: Энергосберегающие технологии
+  title_en: Energy saving
+  title_fr: Energy saving
+  title_ru: Энергосберегающие технологии
 
 mobile-coolers:
   parent: technology
   name: 'mobile-coolers'
   weight: 10
-  title: Мобильные холодильные установки контейнерного типа
+  title_en: Mobile coolers
+  title_fr: Mobile coolers
+  title_ru: Мобильные холодильные установки контейнерного типа

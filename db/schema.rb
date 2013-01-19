@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107182046) do
+ActiveRecord::Schema.define(:version => 20130119090242) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -62,23 +62,29 @@ ActiveRecord::Schema.define(:version => 20130107182046) do
 
   create_table "sections", :force => true do |t|
     t.string   "name",                         :null => false
-    t.string   "title",                        :null => false
     t.integer  "weight",     :default => 0
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
     t.boolean  "visible",    :default => true
     t.integer  "parent_id",  :default => 0
+    t.string   "title_en"
+    t.string   "title_ru"
+    t.string   "title_fr"
   end
 
   add_index "sections", ["name"], :name => "index_sections_on_name", :unique => true
 
   create_table "text_pages", :force => true do |t|
     t.string   "name"
-    t.string   "title"
-    t.text     "body"
     t.integer  "section_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "title_en"
+    t.string   "title_ru"
+    t.string   "title_fr"
+    t.text     "body_en"
+    t.text     "body_ru"
+    t.text     "body_fr"
   end
 
   add_index "text_pages", ["name"], :name => "index_text_pages_on_name", :unique => true

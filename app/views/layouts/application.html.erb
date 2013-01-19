@@ -14,11 +14,21 @@
 <tbody>
 <tr>
     <td height="27" valign="top">
+        <div class="onmain">
         <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#525252" height="27">
-            <tbody><tr>
-                <td width="116"><a href="/"><img width="116" border="0" height="27" alt="На главную" src="/imp/onmain.gif"></a></td><td width="50">&nbsp;</td><td width="175"><a href="/"><img width="74" border="0" height="27" alt="" src="/imp/rus.gif"></a><a href="/"><img width="101" border="0" height="27" alt="" src="/imp/eng.gif"></a></td><td>&nbsp;</td>
+            <tbody><tr style="height: 27px; max-height: 27px;">
+                <td width="116" style="height: 27px"><a href="/"><span class="toplink"><%= I18n.t('onmain') %></span><img width="116" border="0" height="27" alt="На главную" src="/imp/onmain.gif"></a></td>
+                <td width="50">&nbsp;</td>
+                <td width="240">
+                    <div style="position: relative;">
+                        <a href="/">
+                        <span class="lang lang1">Рус</span><img width="74" border="0" height="27" alt="" src="/imp/rus.gif"></a><a href="/"><span class="lang lang2">Рус2</span><img width="65" border="0" height="27" alt="" src="/imp/middle.gif"></a><a href="/"><span class="lang lang3">Рус3</span><img width="101" border="0" height="27" alt="" src="/imp/eng.gif"></a>
+                    </div>
+                </td>
+                <td>&nbsp;</td>
             </tr>
             </tbody></table>
+        </div>
     </td>
 </tr>
 
@@ -188,7 +198,7 @@
                                                             %>
                                                             <tbody><tr>
                                                                 <td>
-                                                                    <a href="<%= print_url %>" class="search" style="color: rgb(148, 147, 147);">Печать</a>&nbsp;
+                                                                    <a href="<%= print_url %>" class="search" style="color: rgb(148, 147, 147);"><%= I18n.t('print') %></a>&nbsp;
                                                                 </td>
                                                                 <td>
                                                                     <a href="<%= print_url %>"><img src="/imp/iconprint.gif" alt="" border="0" height="23" width="25"></a>

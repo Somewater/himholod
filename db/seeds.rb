@@ -13,6 +13,7 @@
 
 require 'active_record/fixtures'
 require "rake"
+require "i18n_columns"
 
 # delete all in selected classes
 [Section, TextPage].each{|c| c.delete_all}
@@ -36,8 +37,8 @@ Section.all.each do |section|
     TextPage.create do |t|
       t.name = section.name + '-page'
       t.section = section
-      t.title = section.title
-      t.body =  (t.section.title.to_s + ' ') * 10
+      t.title_all = section.title
+      t.body_all =  (t.section.title.to_s + ' ') * 10
     end
   end
 end
