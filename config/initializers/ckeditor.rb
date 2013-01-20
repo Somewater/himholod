@@ -16,3 +16,12 @@ if Object.const_defined?("Ckeditor")
     # config.attachment_file_types = ["doc", "docx", "xls", "odt", "ods", "pdf", "rar", "zip", "tar", "swf"]
   end
 end
+
+module Paperclip
+  class Attachment
+    # FIX: этот метод дергается из CKEditor и требует полного пути темпового файла
+    def to_file
+      @queued_for_write[:original].path rescue self
+    end
+  end
+end

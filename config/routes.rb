@@ -1,9 +1,9 @@
 Himholod::Application.routes.draw do
-  scope "(:locale)", :locale => /ru|en|fr/ do
-    mount Ckeditor::Engine => '/ckeditor'
-    devise_for :admin_users
-    mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  mount Ckeditor::Engine => '/ckeditor'
+  devise_for :admin_users
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
+  scope "(:locale)", :locale => /ru|en|fr/ do
     resources :sections, :only => [:show]
     match 'print/:type/:id', :to => 'print#show', :as => 'print'
     match 'sitemap.xml' => 'sitemaps#sitemap'
