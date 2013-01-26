@@ -35,3 +35,4 @@ gem 'httparty', '0.8.1'
 gem "devise", "2.1"
 #gem 'globalize3', "0.2.0"
 gem 'traco', '1.1.0'
+gem 'thin'
