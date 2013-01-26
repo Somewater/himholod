@@ -31,11 +31,8 @@
                            lang2 = I18n.t('locales.en')
                            lang2_url = url_for_params(:locale => :en)
                            lang2_s = I18n.locale.to_s == 'en' ? bold : ''
-                           lang3 = I18n.t('locales.fr')
-                           lang3_url = url_for_params(:locale => :fr)
-                           lang3_s = I18n.locale.to_s == 'fr' ? bold : ''
                         %>
-                        <a href="<%= lang1_url %>"><span class="lang lang1"<%= lang1_s %>><%= lang1 %></span><img width="74" border="0" height="27" alt="" src="/imp/rus.gif"></a><a href="<%= lang2_url %>"><span class="lang lang2"<%= lang2_s %>><%= lang2 %></span><img width="65" border="0" height="27" alt="" src="/imp/middle.gif"></a><a href="<%= lang3_url %>"><span class="lang lang3"<%= lang3_s %>><%= lang3 %></span><img width="101" border="0" height="27" alt="" src="/imp/eng.gif"></a>
+                        <a href="<%= lang1_url %>"><span class="lang lang1"<%= lang1_s %>><%= lang1 %></span><img width="74" border="0" height="27" alt="" src="/imp/rus.gif"></a><a href="<%= lang2_url %>"><span class="lang lang2"<%= lang2_s %>><%= lang2 %></span><img width="101" border="0" height="27" alt="" src="/imp/eng.gif"></a>
                     </div>
                 </td>
                 <td>&nbsp;</td>
