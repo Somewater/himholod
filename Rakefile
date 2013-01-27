@@ -25,8 +25,10 @@ task :megadeploy => :environment do
   if(ENV['DB'])
     Rake::Task["db:drop"].execute rescue puts "DB not exist"
     Rake::Task["db:create"].execute rescue puts "DB already exist"
+  else
+    Rake::Task["db:clear"].execute
   end
-  Rake::Task["db:clear"].execute
+
   Rake::Task["db:migrate"].execute
   Rake::Task["db:seed"].execute
   Rake::Task["import:topics"].execute
