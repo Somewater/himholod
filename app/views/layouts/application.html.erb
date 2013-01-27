@@ -113,7 +113,7 @@
                                                 <% if @section && section == @section %>
                                                     <div class="inactive-ref menu"><%= section.title %></div>
                                                 <% else %>
-                                                    <a href="<%= children.size == 0 ? section_path(section) : 'javascript:void'.html_safe %>" class="menu"><%= section.title %></a>
+                                                    <a href="<%= section_path(section) %>" class="menu"><%= section.title %></a>
                                                 <% end %>
                                             </td>
                                         </tr>
