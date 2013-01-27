@@ -395,7 +395,7 @@ module Himholod
 
     def create_image(img)
       original_uri = img['src'][0, 4] == 'http' ? URI(img['src']).path : img['src']
-      return if original_uri[0, 3] == 'C:\\'
+      return if original_uri[0, 3] == 'C:\\' || original_uri[0, 7] == 'file://'
       local_filename = FILENAME_MATCHER.match(original_uri) ? FILENAME_MATCHER.match(original_uri)[0] : generate_next_filename('jpg')
 
       tempfile = open(Himholod::Importer::BASE_PATH + '/' + original_uri)
