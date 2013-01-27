@@ -68,8 +68,9 @@ module Himholod
         table = body.at_xpath('//table[@height="1000"]')
         content = table.xpath('tbody/tr[2]/td[2]/*')
         images = content.css('img').to_a
+        page = Page.new(content, link['href'])
         images.each_with_index do |img, index|
-          Page.create_image(img)
+          page.create_image(img)
           complete = ((index + 1) / images.size.to_f * 100).round
           log "   Image '#{img['src']}' completed. Images progress #{complete}%"
         end
@@ -358,7 +359,7 @@ module Himholod
 
       images = content.css('img').to_a
       images.each_with_index do |img, index|
-        self.class.create_image(img)
+        create_image(img)
         complete = ((index + 1) / images.size.to_f * 100).round
         log "   Image '#{img['src']}' completed. Images progress #{complete}%"
       end
@@ -392,7 +393,7 @@ module Himholod
       body
     end
 
-    def self.create_image(img)
+    def create_image(img)
       original_uri = img['src'][0, 4] == 'http' ? URI(img['src']).path : img['src']
       return if original_uri[0, 3] == 'C:\\'
       local_filename = FILENAME_MATCHER.match(original_uri) ? FILENAME_MATCHER.match(original_uri)[0] : generate_next_filename('jpg')
