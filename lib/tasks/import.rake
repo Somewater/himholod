@@ -66,7 +66,14 @@ module Himholod
         html = doc.children.last
         body = html.children.last
         table = body.at_xpath('//table[@height="1000"]')
-        content = Page.remove_title(table.xpath('tbody/tr[2]/td[2]/*'))
+        content = table.xpath('tbody/tr[2]/td[2]/*')
+        images = content.css('img').to_a
+        images.each_with_index do |img, index|
+          Page.create_image(img)
+          complete = ((index + 1) / images.size.to_f * 100).round
+          log "   Image '#{img['src']}' completed. Images progress #{complete}%"
+        end
+        content = Page.remove_title(content)
 
         n = News.new
         n.date = date
@@ -351,7 +358,7 @@ module Himholod
 
       images = content.css('img').to_a
       images.each_with_index do |img, index|
-        create_image(img)
+        self.class.create_image(img)
         complete = ((index + 1) / images.size.to_f * 100).round
         log "   Image '#{img['src']}' completed. Images progress #{complete}%"
       end
@@ -385,7 +392,7 @@ module Himholod
       body
     end
 
-    def create_image(img)
+    def self.create_image(img)
       original_uri = img['src'][0, 4] == 'http' ? URI(img['src']).path : img['src']
       return if original_uri[0, 3] == 'C:\\'
       local_filename = FILENAME_MATCHER.match(original_uri) ? FILENAME_MATCHER.match(original_uri)[0] : generate_next_filename('jpg')
