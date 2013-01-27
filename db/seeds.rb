@@ -22,23 +22,3 @@ require "i18n_columns"
 #Rake::Task['db:init'].invoke
 
 ActiveRecord::Fixtures.create_fixtures("#{Rails.root}/db/fixtures", ['sections', 'text_pages'])
-
-TextPage.create do |t|
-  t.name = Section.main.name + '-page'
-  t.section = Section.main
-  t.title = Section.main.title
-  t.body =<<-END
-Текст главной страницы. Это главная страница сайта!!!
-END
-end
-
-Section.all.each do |section|
-  if section.children.length == 0
-    TextPage.create do |t|
-      t.name = section.name + '-page'
-      t.section = section
-      t.title_all = section.title
-      t.body_all =  (t.section.title.to_s + ' ') * 10
-    end
-  end
-end

@@ -1,6 +1,6 @@
 module I18nColumns
 
-  LOCALES = ['en', 'ru', 'fr']
+  LOCALES = ['ru', 'en']
 
   module Migrate
     def up_i18n_column(table, name, type, drop_old = false, options = {})
@@ -8,7 +8,7 @@ module I18nColumns
         remove_column table, name
       end
       LOCALES.each do |l|
-        add_column table, name.to_s + '_' + l, type
+        add_column table, name.to_s + '_' + l, type, options
       end
     end
 

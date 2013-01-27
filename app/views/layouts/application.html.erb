@@ -113,7 +113,7 @@
                                                 <% if @section && section == @section %>
                                                     <div class="inactive-ref menu"><%= section.title %></div>
                                                 <% else %>
-                                                    <a href="<%= children.size == 0 ? section_path(section) : 'javascript:void()'.html_safe %>" class="menu"><%= section.title %></a>
+                                                    <a href="<%= children.size == 0 ? section_path(section) : 'javascript:void'.html_safe %>" class="menu"><%= section.title %></a>
                                                 <% end %>
                                             </td>
                                         </tr>
@@ -233,7 +233,7 @@
                                                 <%= yield %>
                                             </div>
                                         </td>
-                                    </tr></tbody></table>
+                                    </tr><tr><td height="40"></td></tr></tbody></table>
                             </td></tr></tbody></table></td>
 
                         <td width="15">&nbsp;<!-- margin --></td>

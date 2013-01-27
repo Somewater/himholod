@@ -10,7 +10,7 @@ class AddTranslationFields < ActiveRecord::Migration
 
     # TEXT PAGE
     up_i18n_column(:text_pages, :title, :string, true)
-    up_i18n_column(:text_pages, :body, :text, true)
+    up_i18n_column(:text_pages, :body, :text, true, :limit => 64.kilobytes + 1)
   end
 
   def down

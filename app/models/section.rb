@@ -1,20 +1,24 @@
 class Section < ActiveRecord::Base
 
+  MAIN_NAME = 'main'
+  ORDER = "weight ASC"
+  CONDITIONS = 'visible = TRUE'
+
   extend ::I18nColumns::Model
   i18n_columns :title
 
   attr_accessible :name, :weight, :visible, :parent_id
   belongs_to :parent, :class_name => 'Section'
-
-  MAIN_NAME = 'main'
-  ORDER = "weight ASC"
+  has_many :children, :class_name => 'Section', :foreign_key => 'parent_id', :order => Section::ORDER, :conditions => CONDITIONS
+  has_many :text_pages
+  has_many :ckeditor_assets, :class_name => 'Ckeditor::AttachmentFile'
 
   def self.main
     self.find_by_name(MAIN_NAME)
   end
 
   def self.tree
-    self.find_all_by_parent_id(Section.main.id, :order => Section::ORDER)
+    self.find_all_by_parent_id(Section.main.id, :order => Section::ORDER, :conditions => CONDITIONS)
   end
 
   def main?
@@ -44,9 +48,5 @@ class Section < ActiveRecord::Base
       p = p.parent
     end
     result
-  end
-
-  def children
-    Section.find_all_by_parent_id(self.id, :order => Section::ORDER) || []
   end
 end

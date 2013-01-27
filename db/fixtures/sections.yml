@@ -2,7 +2,6 @@ main:
   parent_id: 0
   name: 'main'
   title_en: Main
-  title_fr: Main
   title_ru: Главная
 
 ##############
@@ -11,197 +10,318 @@ main:
 #
 ##############
 
-refrigerating-equipment:
-  parent: main
-  name: 'refrigerating-equipment'
-  weight: 0
-  title_en: Refrigerating equipment
-  title_fr: Refrigerating equipment
-  title_ru: Холодильное оборудование
-
-contacts:
-  parent: main
-  name: 'contacts'
-  weight: 10
-  title_en: Contacts
-  title_fr: Contacts
-  title_ru: Наши координаты
-
 about:
   parent: main
   name: 'about'
-  weight: 20
+  weight: 10
   title_en: About
-  title_fr: About
   title_ru: О компании
+
+designing:
+  parent: main
+  name: 'designing'
+  weight: 20
+  title_en: Designing
+  title_ru: Проектирование
 
 production:
   parent: main
   name: 'production'
   weight: 30
   title_en: Production
-  title_fr: Production
   title_ru: Производство
+
+equipment:
+  parent: main
+  name: 'equipment'
+  weight: 40
+  title_en: Equipment
+  title_ru: Оборудрвание
 
 activity-direction:
   parent: main
   name: 'activity-direction'
-  weight: 40
-  title_en: Activity direction
-  title_fr: Activity direction
-  title_ru: Направления деятельности
-
-project:
-  parent: main
-  name: 'project'
   weight: 50
-  title_en: Project
-  title_fr: Project
-  title_ru: Проект
-
-technology:
-  parent: main
-  name: 'technology'
-  weight: 60
-  title_en: Technology
-  title_fr: Technology
-  title_ru: Технические решения
+  title_en: Activity direction
+  title_ru: Направления деятельности
 
 services:
   parent: main
   name: 'services'
-  weight: 70
+  weight: 60
   title_en: Services
-  title_fr: Services
   title_ru: Сервисное обслуживание
 
-vacancy:
+publications:
   parent: main
-  name: 'vacancy'
+  name: 'publications'
+  weight: 70
+  title_en: Publications
+  title_ru: Публикации
+
+news:
+  parent: main
+  name: 'news'
   weight: 80
+  title_en: News
+  title_ru: Новости
+
+files:
+  parent: main
+  name: 'files'
+  weight: 90
+  title_en: Documents
+  title_ru: Документы, референции
+
+contacts:
+  parent: main
+  name: 'contacts'
+  weight: 100
+  title_en: Contacts
+  title_ru: Наши координаты
+
+undefined:
+  parent: main
+  name: 'undefined'
+  weight: 110
+  visible: false
+  title_en: Undefined
+  title_ru: Невидимая секция
+
+##################
+#
+#      ABOUT
+#
+###################
+
+history:
+  parent: about
+  name: 'history'
+  weight: 10
+  title_en: History
+  title_ru: История
+
+management:
+  parent: about
+  name: 'management'
+  weight: 20
+  title_en: Management
+  title_ru: Руководство
+
+сompany:
+  parent: about
+  name: 'сompany'
+  weight: 30
+  title_en: Company structure
+  title_ru: Структура компании
+
+vacancy:
+  parent: about
+  name: 'vacancy'
+  weight: 40
   title_en: Vacancy
-  title_fr: Vacancy
   title_ru: Вакансии компании
 
-useful-info:
-  parent: main
-  name: 'useful-info'
-  weight: 90
-  title_en: Useful info
-  title_fr: Useful info
-  title_ru: Полезная информация
+##################
+#
+#    PRODUCTION
+#
+###################
 
-reference-list:
-  parent: main
-  name: 'reference-list'
-  weight: 110
-  title_en: Reference list
-  title_fr: Reference list
-  title_ru: Референц-лист проектов
+equipment-production:
+  parent: production
+  name: 'equipment-production'
+  weight: 10
+  title_en: Equipment production
+  title_ru: Разработка оборудования
 
-sale:
-  parent: main
-  name: 'sale'
-  weight: 120
-  title_en: Sale!!!
-  title_fr: Sale!!!
-  title_ru: Распродажа!!!
+production-basis:
+  parent: production
+  name: 'production-basis'
+  weight: 20
+  title_en: Production basis
+  title_ru: Производственная база
 
-sitemap:
-  parent: main
-  name: 'sitemap'
-  weight: 130
-  title_en: Sitemap
-  title_fr: Sitemap
-  title_ru: Карта сайта
+##################
+#
+#    EQUIPMENT
+#
+###################
 
-info:
-  parent: main
-  name: 'info'
-  weight: 140
-  title_en: Info
-  title_fr: Info
-  title_ru: Информация
+refrigerating-equipment:
+  parent: equipment
+  name: 'refrigerating-equipment'
+  weight: 10
+  title_en: Refrigerating equipment
+  title_ru: Холодильные машины
 
 refrigerating-container:
-  parent: main
+  parent: equipment
   name: 'refrigerating-container'
-  weight: 150
-  title_en: Refrigerating container
-  title_fr: Refrigerating container
-  title_ru: Холодильные установки контейнерного типа
-
-
-##################
-#
-#  ABOUT SUBMENUS
-#
-###################
-
-company:
-  parent: about
-  name: 'company'
-  weight: 0
-  title_en: Company
-  title_fr: Company
-  title_ru: О компании
-
-press:
-  parent: about
-  name: 'press'
-  weight: 10
-  title_en: Press
-  title_fr: Press
-  title_ru: Публикации в прессе
-
-qa-system:
-  parent: about
-  name: 'qa-system'
   weight: 20
-  title_en: QA system
-  title_fr: QA system
-  title_ru: Система менеджмента и качества
+  title_en: Refrigerating container
+  title_ru: Контейнерные установки
+
+compressor:
+  parent: equipment
+  name: 'compressor'
+  weight: 30
+  title_en: Compressors
+  title_ru: Компрессорные агрегаты
+
+pump:
+  parent: equipment
+  name: 'pump'
+  weight: 40
+  title_en: Pumps
+  title_ru: Насосные агрегаты
+
+heat-exchanger:
+  parent: equipment
+  name: 'heat-exchanger'
+  weight: 50
+  title_en: Heat exchangers
+  title_ru: Теплобменные аппараты
+
+utility:
+  parent: equipment
+  name: 'utility'
+  weight: 60
+  title_en: Utility
+  title_ru: Комплектующие
+
+energy-saving:
+  parent: equipment
+  name: 'energy-saving'
+  weight: 70
+  title_en: Energy saving
+  title_ru: Энергосберегающие технологии
+
+mobile-coolers:
+  parent: equipment
+  name: 'mobile-coolers'
+  weight: 80
+  title_en: Mobile coolers
+  title_ru: Мобильные холодильные установки
 
 ##################
 #
-#  activity-direction SUBMENUS
+#  ACTIVITY DIRECTION
 #
 ###################
-
-sport-buildings:
-  parent: activity-direction
-  name: 'sport-buildings'
-  weight: 0
-  title_en: Sport buildings
-  title_fr: Sport buildings
-  title_ru: Спортивные сооружения
 
 industrial-project:
   parent: activity-direction
   name: 'industrial-project'
   weight: 10
-  title_en: Industrial project
-  title_fr: Industrial project
-  title_ru: Объекты общепромышленного характера
+  title_en: Industrial projects
+  title_ru: Промышленные объекты
+
+public-buildings:
+  parent: activity-direction
+  name: 'public-buildings'
+  weight: 20
+  title_en: Public buildings
+  title_ru: Общественные объекты
+
+special-project:
+  parent: activity-direction
+  name: 'special-project'
+  weight: 30
+  title_en: Special projects
+  title_ru: Специальные объекты
 
 ##################
 #
-#  TECHNOLOGY SUBMENUS
+#      PUBLICAIOONS
 #
 ###################
 
-energy-saving:
-  parent: technology
-  name: 'energy-saving'
-  weight: 0
-  title_en: Energy saving
-  title_fr: Energy saving
-  title_ru: Энергосберегающие технологии
-
-mobile-coolers:
-  parent: technology
-  name: 'mobile-coolers'
+scientific:
+  parent: publications
+  name: 'scientific'
   weight: 10
-  title_en: Mobile coolers
-  title_fr: Mobile coolers
-  title_ru: Мобильные холодильные установки контейнерного типа
+  title_en: Scientific
+  title_ru: Научные труды
+
+press:
+  parent: publications
+  name: 'press'
+  weight: 20
+  title_en: press
+  title_ru: Печатные статьи
+
+press-about-us:
+  parent: publications
+  name: 'press-about-us'
+  weight: 30
+  title_en: Press about us
+  title_ru: Пресса о нас
+
+##################
+#
+#      FILES
+#
+###################
+
+presentations:
+  parent: files
+  name: 'presentations'
+  weight: 10
+  title_en: Presentations
+  title_ru: Презентации
+
+reference:
+  parent: files
+  name: 'reference'
+  weight: 20
+  title_en: References
+  title_ru: Референц-листы
+
+certification:
+  parent: files
+  name: 'certification'
+  weight: 30
+  title_en: Сertification
+  title_ru: Лицензии и сертификаты
+
+testimonial:
+  parent: files
+  name: 'testimonial'
+  weight: 40
+  title_en: Testimonials
+  title_ru: Отзывы о компании
+
+other:
+  parent: files
+  name: 'other'
+  weight: 50
+  title_en: Other
+  title_ru: Прочее
+
+##################
+#
+#      CONTACTS
+#
+###################
+
+address:
+  parent: contacts
+  name: 'address'
+  weight: 10
+  title_en: Address
+  title_ru: Схема проезда
+
+subdivision:
+  parent: contacts
+  name: 'subdivision'
+  weight: 20
+  title_en: Subdivisions
+  title_ru: Подразделения
+
+feedback:
+  parent: contacts
+  name: 'feedback'
+  weight: 30
+  title_en: Feedback
+  title_ru: Обратная связь

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130120231059) do
+ActiveRecord::Schema.define(:version => 20130120230641) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -42,34 +42,23 @@ ActiveRecord::Schema.define(:version => 20130120231059) do
     t.integer  "height"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
-    t.string   "title_en"
     t.string   "title_ru"
-    t.string   "title_fr"
-    t.integer  "file_section_id"
+    t.string   "title_en"
+    t.integer  "section_id"
   end
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
-
-  create_table "ckeditor_file_sections", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "title_en"
-    t.string   "title_ru"
-    t.string   "title_fr"
-  end
 
   create_table "news", :force => true do |t|
     t.string   "name"
     t.date     "date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "title_en"
     t.string   "title_ru"
-    t.string   "title_fr"
-    t.text     "body_en"
+    t.string   "title_en"
     t.text     "body_ru"
-    t.text     "body_fr"
+    t.text     "body_en"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -92,9 +81,8 @@ ActiveRecord::Schema.define(:version => 20130120231059) do
     t.datetime "updated_at",                   :null => false
     t.boolean  "visible",    :default => true
     t.integer  "parent_id",  :default => 0
-    t.string   "title_en"
     t.string   "title_ru"
-    t.string   "title_fr"
+    t.string   "title_en"
   end
 
   add_index "sections", ["name"], :name => "index_sections_on_name", :unique => true
@@ -102,14 +90,12 @@ ActiveRecord::Schema.define(:version => 20130120231059) do
   create_table "text_pages", :force => true do |t|
     t.string   "name"
     t.integer  "section_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "title_en"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "title_ru"
-    t.string   "title_fr"
-    t.text     "body_en"
-    t.text     "body_ru"
-    t.text     "body_fr"
+    t.string   "title_en"
+    t.text     "body_ru",    :limit => 16777215
+    t.text     "body_en",    :limit => 16777215
   end
 
   add_index "text_pages", ["name"], :name => "index_text_pages_on_name", :unique => true
