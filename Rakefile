@@ -15,7 +15,8 @@ namespace :db do
     Ckeditor::Asset.delete_all
 
     require "fileutils"
-    FileUtils.rm_rf("#{Rails.public_path.to_s}/assets", secure: true)
+    FileUtils.rm_rf("#{Rails.public_path.to_s}/assets/attachments", secure: true)
+    FileUtils.rm_rf("#{Rails.public_path.to_s}/assets/pictures", secure: true)
   end
 
 end
