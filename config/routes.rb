@@ -5,6 +5,7 @@ Himholod::Application.routes.draw do
 
   scope "(:locale)", :locale => /ru|en|fr/ do
     resources :sections, :only => [:show]
+    resources :text_pages, :only => [:show], :path => "pages"
     match 'print/:type/:id', :to => 'print#show', :as => 'print'
     match 'sitemap.xml' => 'sitemaps#sitemap'
     match "search", :to => 'search#search_words'

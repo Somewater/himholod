@@ -1,6 +1,7 @@
 class Section < ActiveRecord::Base
 
   MAIN_NAME = 'main'
+  NEWS_NAME = 'news'
   ORDER = "weight ASC"
   CONDITIONS = 'visible = TRUE'
 

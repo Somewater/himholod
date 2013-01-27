@@ -11,4 +11,8 @@ class TextPage < ActiveRecord::Base
     t = self.name if t.blank?
     t
   end
+
+  def to_param
+    self.name.to_s.size > 0 ? self.name : self.id
+  end
 end

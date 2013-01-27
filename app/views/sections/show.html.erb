@@ -1,6 +1,31 @@
-<p><%= @section.title %></p>
-<ul>
-    <% @section.children.each do |child| %>
-        <li><a href="<%= section_path(child) %>"><%= child.title %></a></li>
-    <% end %>
-</ul>
+<% if @section.text_pages.size == 1 %>
+    <%= @section.text_pages.first.body.to_s.html_safe %>
+    <p></p>
+<% end %>
+
+<% if @section.children.size > 0 %>
+    <span class="headers1"><%= I18n.t('sections') %></span>
+    <ul>
+        <% @section.children.each do |child| %>
+            <li><a href="<%= section_path(child) %>"><%= child.title %></a></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<% if @section.text_pages.size > 1 %>
+    <span class="headers1"><%= I18n.t('text_pages') %></span>
+    <ul>
+        <% @section.text_pages.each do |page| %>
+            <li><a href="<%= text_page_path(page) %>"><%= page.title %></a></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<% if @section.ckeditor_assets.size > 0 %>
+    <span class="headers1"><%= I18n.t('files') %></span>
+    <ul>
+        <% @section.ckeditor_assets.each do |asset| %>
+            <li><a href="<%= asset.url %>"><%= asset.title %></a></li>
+        <% end %>
+    </ul>
+<% end %>
