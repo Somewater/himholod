@@ -1,0 +1,7 @@
+<% @news.each do |news| %>
+    <div style="font-size: 9px; color: rgb(80, 80, 80);"><%= news.date.strftime('%d/%m/%Y') %></div>
+    <a class=search style="text-decoration:none" href="<%= news_path(news) %>">
+        <span style="font-size: 12px;"><STRONG><%= news.title %></STRONG></span>
+    </a>
+    <p></p>
+<% end %>

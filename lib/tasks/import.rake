@@ -12,6 +12,12 @@ namespace :import do
     importer.files()
   end
 
+  desc "Load news from himholod.ru and save to db"
+  task :news => :environment do
+    importer = create_importer()
+    importer.news()
+  end
+
   def create_importer()
     require "nokogiri"
     require "open-uri"
@@ -30,7 +36,7 @@ module Himholod
     BASE_PATH = "http://himholod.ru"
 
     def topics()
-      log "import starting"
+      log "TOPICS import starting"
       sections = (get_sections() << Section.generate_main)
       sections.each_with_index do |section, index|
         unless section.model
@@ -39,16 +45,42 @@ module Himholod
         end
         page = process_page(section, true)
 
-        complete = ((index + 1) / sections.size.to_f).round(2) * 100
+        complete = ((index + 1) / sections.size.to_f * 100).round
         log "Page '#{page.original_uri}' created. Progress #{complete}%"
       end
     end
 
-    def files()
-      process_files_page()
+    def news()
+      log "NEWS import starting"
+      doc = Nokogiri::HTML(open(BASE_PATH + '/'), "r:windows-1251")
+      html = doc.children.last
+      body = html.children.last
+      table = body.xpath('//table[@width="254"]').last
+      tds = table.xpath('tr/td')
+      tds.each_with_index do |td, index|
+        next unless td['style']
+        date = Time.parse(td.text.strip.match(/(?<str>\d+\/\d+\/\d+).+/)[:str])
+        link = td.at_css('a')
+        title = link.content.strip
+        doc = Nokogiri::HTML(open(BASE_PATH + '/' + link['href']), "r:windows-1251")
+        html = doc.children.last
+        body = html.children.last
+        table = body.at_xpath('//table[@height="1000"]')
+        content = Page.remove_title(table.xpath('tbody/tr[2]/td[2]/*'))
+
+        n = News.new
+        n.date = date
+        n.title = title
+        n.body = content
+        n.save
+
+        complete = ((index + 1) / tds.size.to_f * 100).round
+        log "Progress #{complete}%"
+      end
     end
 
-    def process_files_page()
+    def files()
+      log "FILES import starting"
       page = get_page(Section::FILES_INDEX)
       page.file_list()
     end
@@ -320,7 +352,7 @@ module Himholod
       images = content.css('img').to_a
       images.each_with_index do |img, index|
         create_image(img)
-        complete = ((index + 1) / images.size.to_f).round(2) * 100
+        complete = ((index + 1) / images.size.to_f * 100).round
         log "   Image '#{img['src']}' completed. Images progress #{complete}%"
       end
 
@@ -337,18 +369,18 @@ module Himholod
         text_page.section = section.model
         text_page.name = section.model.name.to_s + '-page' + (number == 0 ? '' : number.to_s)
       end
-      text_page.title = section.title
-      text_page.body = remove_title(content).to_s
+      text_page.title = section.title.strip
+      text_page.body = self.class.remove_title(content).to_s
       text_page.save
 
       @sub_pages_sections
     end
 
-    def remove_title(body)
-      body.at_css('span.headers1').each do |header|
-        nxt = header.next
-        header.unlink
-        nxt.unlink
+    def self.remove_title(body)
+      body = body.to_s.strip
+      m = body.match(/\<span class\="headers1"\>[^\<]*\<\/span\>\<br\>/)
+      if m && body[0, m[0].size] == m[0]
+        body[0, m[0].size] = ''
       end
       body
     end
@@ -387,11 +419,11 @@ module Himholod
           file = Ckeditor::AttachmentFile.new
           file.data = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :filename => section.name + '_file.' + (pdf ? 'pdf' : 'jpg') )
           file.section = section
-          file.title = current_section_title.to_s + ' - ' + link.content
+          file.title = current_section_title.to_s + ' - ' + link.content.strip
           file.save
         end
 
-        complete = ((index + 1) / trs.size.to_f).round(2) * 100
+        complete = ((index + 1) / trs.size.to_f * 100).round
         log "Progress #{complete}%"
       end
       list

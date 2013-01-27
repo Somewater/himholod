@@ -244,14 +244,21 @@
                                         <table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td valign="top">
 
 
-                                            <table border="0" cellpadding="5" cellspacing="0" width="254">
+                                            <table border="0" cellpadding="5" cellspacing="10" width="254">
                                                 <% if @section && @section.main? %>
                                                     <tbody>
                                                     <tr><td colspan="2"><span style="font-size: 12px; font-weight: bold;"><%= I18n.t('news_title') %></span></td></tr>
 
+                                                    <% News.top.each do |news| %>
                                                     <tr><td><img style="border: 1px solid rgb(96, 96, 96);" src="/imp/news_marker.gif"></td></tr>
-                                                    <tr><td style="font-size: 7pt; color: rgb(80, 80, 80);">16/01/2009 17:28 <a class=search style="text-decoration:none" href=index.php?page=106><FONT color=#663399 size=2><STRONG>Дворец Спорта-школа высшего олимпийского мастерства под руководством Е.А.Чайковской, г.Москва, р-он Строгино,пуск 2009г.</STRONG></FONT>
-                                                        <P></P><a></td></tr>
+                                                    <tr><td>
+                                                        <div style="font-size: 9px; color: rgb(80, 80, 80);"><%= news.date.strftime('%d/%m/%Y') %></div>
+                                                        <a class=search style="text-decoration:none" href="<%= news_path(news) %>">
+                                                            <span style="font-size: 12px;"><STRONG><%= news.title %></STRONG></span>
+                                                        </a>
+                                                    </td></tr>
+                                                    <% end %>
+
                                                     </tbody>
                                                 <% end %>
                                             </table>

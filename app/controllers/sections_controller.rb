@@ -6,7 +6,8 @@ class SectionsController < ApplicationController
     elsif @section.main?
       redirect_to root_path
     elsif @section.name == Section::NEWS_NAME
-      render 'main_page/not_found'
+      @news = News.all
+      render 'news/index'
     else
       # показать контент раздела
       if(@section.children.size > 0 || @section.text_pages.size > 1 || @section.ckeditor_assets.size > 0)

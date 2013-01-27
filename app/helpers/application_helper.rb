@@ -20,6 +20,8 @@ module ApplicationHelper
     case item
       when TextPage
         super(:type => PrintController::PAGE, :id => item)
+      when News
+        super(:type => PrintController::NEWS, :id => item)
       else
         super
     end
