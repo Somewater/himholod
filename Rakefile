@@ -30,6 +30,7 @@ task :megadeploy => :environment do
   Rake::Task["db:migrate"].execute
   Rake::Task["db:seed"].execute
   Rake::Task["import:topics"].execute
+  Rake::Task["import:files"].execute
 
   Section.all.each do |section|
     if(section.text_pages.size == 0 && section.children.size == 0 &&

@@ -49,4 +49,21 @@ class Section < ActiveRecord::Base
     end
     result
   end
+
+  def hierarchy_name
+    n = self.pretty_name
+    self.chain(true).reverse.drop(1).each_with_index do |section, index|
+      if index > 2
+        n = '.. > ' + n
+        break
+      end
+      n = section.pretty_name + ' > ' + n
+    end
+    n
+  end
+
+  def pretty_name
+    t = self.title
+    t && t.size > 0 ? t : self.name
+  end
 end

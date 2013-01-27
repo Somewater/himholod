@@ -2,14 +2,25 @@
 namespace :import do
   desc "Load topics from himholod.ru and save to db"
   task :topics => :environment do
+    importer = create_importer()
+    importer.topics()
+  end
+
+  desc "Load files from himholod.ru and save to db"
+  task :files => :environment do
+    importer = create_importer()
+    importer.files()
+  end
+
+  def create_importer()
     require "nokogiri"
     require "open-uri"
     OpenURI::Buffer.send :remove_const, 'StringMax' if OpenURI::Buffer.const_defined?('StringMax')
     OpenURI::Buffer.const_set 'StringMax', 0 # всегда работать с tempfile
     require "net/http"
     require "uri"
-    importer = Himholod::Importer.new
-    importer.startup("/")
+    require "pdf-reader"
+    Himholod::Importer.new
   end
 end
 
@@ -18,7 +29,7 @@ module Himholod
 
     BASE_PATH = "http://himholod.ru"
 
-    def startup(root)
+    def topics()
       log "import starting"
       sections = (get_sections() << Section.generate_main)
       sections.each_with_index do |section, index|
@@ -31,9 +42,15 @@ module Himholod
         complete = ((index + 1) / sections.size.to_f).round(2) * 100
         log "Page '#{page.original_uri}' created. Progress #{complete}%"
       end
+    end
 
-      # импорт файлов
+    def files()
+      process_files_page()
+    end
 
+    def process_files_page()
+      page = get_page(Section::FILES_INDEX)
+      page.file_list()
     end
 
     def process_page(section, top_level = false)
@@ -164,7 +181,43 @@ module Himholod
               'press' => ['Холодильные машины ООО "НПФ "ХИМХОЛОДСЕРВИС" для Ледовых дворцов',
                           'Энергосберегающие системы кондиционирования воздуха в спортивных и общественных зданиях, сооружаемых к Олимпиаде "Сочи 2014"',
                           'Реконструкция московских катков (2007г)'],
-              'other' => ['Таблица перевода величин']
+              'other' => ['Таблица перевода величин',
+                          'РАСПРОДАЖА',
+                          'ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ ИСПАРИТЕЛЬНЫХ КОНДЕНСАТОРОВ ТИПА VXC ФИРМЫ BALTIMORE',
+                          'ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ ПАНЕЛЬНЫХ АККУМУЛЯТОРОВ ХОЛОДА ТИПА BIC',
+                          'ТЕХНИЧЕСКИЕ ДАННЫЕ ИСПАРИТЕЛЬНЫХ КОНДЕНСАТОРОВ ФИРМЫ DECSA',
+                          'АММИАЧНЫЕ ВОЗДУХООХЛАДИТЕЛИ НАВЕСНЫЕ ТИПА АВН И ПОДВЕСНЫЕ ТИПА АВП',
+                          'АММИАЧНЫЕ БЛОКИ ДЛЯ ПОЛУЧЕНИЯ «ЛЕДЯНОЙ ВОДЫ» типа ИПТ',
+                          'АММИАЧНЫЕ ИСПАРИТЕЛЬНЫЕ БЛОКИ ТИПА БИА',
+                          'КОНДЕНСАТОРЫ КОЖУХОТРУБЧАТЫЕ ГОРИЗОНТАЛЬНЫЕ АММИАЧНЫЕ КТГА и КГА',
+                          'ЕМКОСТНОЕ ОБОРУДОВАНИЕ',
+                          'ИСПАРИТЕЛИ АММИАЧНЫЕ ИМКА-360 и ИМКА-460',
+                          'ИСПАРИТЕЛЬНЫЕ КОНДЕНСАТОРЫ ТИПА МИК',
+                          'ИСПАРИТЕЛИ С ВНУТРИТРУБНЫМ КИПЕНИЕМ ТИПА ИТ',
+                          'АММИАЧНЫЕ КОЖУХОТРУБНЫЕ ИСПАРИТЕЛИ ЗАТОПЛЕННОГО ТИПА ИТГА',
+                          'МНОГОКАНАЛЬНЫЙ СТАЦИОНАРНЫЙ ГАЗОАНАЛИЗАТОР АММИАКА ',
+                          'МАСЛООХЛАДИТЕЛИ ТИПА МОХ',
+                          'ИСПАРИТЕЛИ МИ-90',
+                          'ПЛЕНОЧНЫЕ ИСПАРИТЕЛИ'],
+
+
+              #######################
+              #                     #
+              #        FILES        #
+              #                     #
+              #######################
+              'presentations' => [
+                                  'Контейнеры',
+                                  'Публ_Колосов8'
+                                  ],
+              'certification' => [
+                                  'СЕРТИФИКАТЫ НА ХОЛОДИЛЬНЫЕ МАШИНЫ СЕРИИ 130, 420, 630',
+                                  'СЕРТИФИКАТЫ НА АГРЕГАТЫ СЕРИИ А 130, А 420',
+                                  'СЕРТИФИКАТ НА УХК',
+                                  'СЕРТИФИКАТЫ ISO, OHSAS',
+                                  'СЕРТИФИКАТЫ НА ХОЛОДИЛЬНЫЕ МАШИНЫ СЕРИИ МКТ ( МВТ) 50, 100, 130, 150, 200, 250, 300, 400, 500 ',
+                                  'РАЗРЕШЕНИЕ НА ПРИМЕНЕНИЕ',
+                                  'СЕРТИФИКАТ НА ЭЛЕКТРОЩИТЫ']
              }
 
     CAN_PASS = ['http://www.himholod.ru/','www.himholod.ru','http://www.himholod.ru','http://himholod.ru/','http://himholod.ru','himholod.ru',
@@ -313,6 +366,35 @@ module Himholod
       picture.save
       img['src'] = picture.url
       picture
+    end
+
+    def file_list()
+      list = []
+      current_section_title = nil
+      trs = self.content.css('tr')
+      trs.each_with_index do |tr, index|
+        if tr['class'] == 'bl'
+          current_section_title = tr.children.first.content if tr.children.size == 1
+        elsif tr['class'] == 'bs'
+          link = tr.at_xpath('td[1]/a')
+          section_select = Section::CONFIG.select{|k,values| values.index(current_section_title) }.first
+          section_name = section_select ? section_select.first.to_s : 'other'
+          section = ::Section.find_by_name(section_name)
+
+          tempfile = open(Himholod::Importer::BASE_PATH + '/' + link['href'])
+          pdf = PDF::Reader.new(tempfile.path) rescue nil
+
+          file = Ckeditor::AttachmentFile.new
+          file.data = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :filename => section.name + '_file.' + (pdf ? 'pdf' : 'jpg') )
+          file.section = section
+          file.title = current_section_title.to_s + ' - ' + link.content
+          file.save
+        end
+
+        complete = ((index + 1) / trs.size.to_f).round(2) * 100
+        log "Progress #{complete}%"
+      end
+      list
     end
 
     def generate_next_filename(ext)

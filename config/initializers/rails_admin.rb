@@ -150,6 +150,9 @@ RailsAdmin.config do |config|
         end
       end
     end
+    config.model Section do
+      object_label_method :hierarchy_name
+    end
   end
 
 end
