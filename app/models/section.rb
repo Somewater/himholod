@@ -14,6 +14,9 @@ class Section < ActiveRecord::Base
   has_many :text_pages
   has_many :ckeditor_assets, :class_name => 'Ckeditor::AttachmentFile'
 
+  validates :parent, :presence =>  { :unless => :main? }
+  validates :name, :presence => true, :format => /^[a-z][a-z0-9\-]+$/ , :unless => :main?
+
   def self.main
     self.find_by_name(MAIN_NAME)
   end

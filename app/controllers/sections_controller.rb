@@ -6,7 +6,7 @@ class SectionsController < ApplicationController
     elsif @section.main?
       redirect_to root_path
     elsif @section.name == Section::NEWS_NAME
-      @news = News.all
+      @news = News.order("date DESC")
       render 'news/index'
     else
       # показать контент раздела

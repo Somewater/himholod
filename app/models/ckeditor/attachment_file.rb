@@ -10,6 +10,8 @@ class Ckeditor::AttachmentFile < Ckeditor::Asset
 
   belongs_to :section
 
+  validates :section, :presence => true
+
   extend ::I18nColumns::Model
   i18n_columns :title
 	

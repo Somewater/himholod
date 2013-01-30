@@ -6,6 +6,9 @@ class TextPage < ActiveRecord::Base
   attr_accessible :name, :section_id
   belongs_to :section
 
+  validates :section, :presence => true
+  validates :name, :format => /^[a-z][a-z0-9\-]+$/
+
   def title
     t = super
     t = self.name if t.blank?
