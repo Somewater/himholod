@@ -4,12 +4,28 @@
 <% end %>
 
 <% if @section.children.size > 0 %>
+    <% if @section.children.all?{|c| c.picture} %>
+    <div>
+        <% @section.children.each_with_index do |child, index| %>
+            <% if index > 0 && index % 3 == 0 %>
+                <br style="clear:both" />
+            <% end %>
+            <div style="<%= (index > 0 && index % 3 == 0 ? 'float:left;' : 'float:left;').html_safe %>; margin-right: 10px; margin-bottom: 20px; max-width: 200px;">
+                <a href="<%= section_path(child) %>">
+                    <img src="<%= child.picture.url(:section_image) %>" width="200">
+                    <%= child.title %>
+                </a>
+            </div>
+        <% end %>
+    </div>
+    <% else %>
     <span class="headers1"><%= I18n.t('sections') %></span>
     <ul>
         <% @section.children.each do |child| %>
             <li><a href="<%= section_path(child) %>"><%= child.title %></a></li>
         <% end %>
     </ul>
+    <% end %>
 <% end %>
 
 <% if @section.text_pages.size > 1 %>

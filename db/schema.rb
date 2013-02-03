@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130120230641) do
+ActiveRecord::Schema.define(:version => 20130203144441) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20130120230641) do
     t.string   "title_ru"
     t.string   "title_en"
     t.integer  "section_id"
+    t.text     "description_ru"
+    t.text     "description_en"
   end
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
@@ -83,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20130120230641) do
     t.integer  "parent_id",  :default => 0
     t.string   "title_ru"
     t.string   "title_en"
+    t.integer  "picture_id"
   end
 
   add_index "sections", ["name"], :name => "index_sections_on_name", :unique => true

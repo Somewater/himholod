@@ -8,8 +8,9 @@ class Section < ActiveRecord::Base
   extend ::I18nColumns::Model
   i18n_columns :title
 
-  attr_accessible :name, :weight, :visible, :parent_id
+  attr_accessible :name, :weight, :visible, :parent_id, :picture_id
   belongs_to :parent, :class_name => 'Section'
+  belongs_to :picture, :class_name => 'Ckeditor::Picture'
   has_many :children, :class_name => 'Section', :foreign_key => 'parent_id', :order => Section::ORDER, :conditions => CONDITIONS
   has_many :text_pages
   has_many :ckeditor_assets, :class_name => 'Ckeditor::AttachmentFile'

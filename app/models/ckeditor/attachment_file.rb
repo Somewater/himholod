@@ -13,7 +13,7 @@ class Ckeditor::AttachmentFile < Ckeditor::Asset
   validates :section, :presence => true
 
   extend ::I18nColumns::Model
-  i18n_columns :title
+  i18n_columns :title, :description
 	
 	def url_thumb
 	  @url_thumb ||= Ckeditor::Utils.filethumb(filename)

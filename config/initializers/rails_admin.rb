@@ -145,8 +145,8 @@ RailsAdmin.config do |config|
   RailsAdmin.config do |config|
     config.models do
       edit do
-        fields_of_type :text do
-          ckeditor true
+        fields_of_type :text do |f|
+          ckeditor true unless f.name.match(/^description/)
         end
       end
     end

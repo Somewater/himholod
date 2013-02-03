@@ -2,7 +2,8 @@ class Ckeditor::Picture < Ckeditor::Asset
   has_attached_file :data,
                     :url  => "/assets/pictures/:id/:style_:basename.:extension",
                     :path => ":rails_root/public/assets/pictures/:id/:style_:basename.:extension",
-	                  :styles => { :content => '1920>', :thumb => '118x100#' }
+	                  :styles => { :content => '1920>', :thumb => '118x100#', :section_image => '200x200' },
+                    :default_style => :content
 
   attr_accessible :width, :height
 	
