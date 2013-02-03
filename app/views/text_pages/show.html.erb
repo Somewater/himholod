@@ -1,2 +1,3 @@
 <%= @page.body.to_s.html_safe %>
 <% if @feedback_add_form %><%= render :partial => 'feedback_add_form' %><% end %>
+<% if @yandex_map %><%= render :partial => 'yandex_map' %><% end %>

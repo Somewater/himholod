@@ -3,6 +3,7 @@ class Section < ActiveRecord::Base
   MAIN_NAME = 'main'
   NEWS_NAME = 'news'
   FEEDBACK_NAME = 'feedback'
+  ADDRESS_NAME = 'address'
   ORDER = "weight ASC"
   CONDITIONS = 'visible = TRUE'
 
@@ -33,6 +34,10 @@ class Section < ActiveRecord::Base
 
   def feedback?
     self.name == FEEDBACK_NAME
+  end
+
+  def address?
+    self.name == ADDRESS_NAME
   end
 
   def to_param

@@ -4,6 +4,8 @@ en:
   print: Print
   onmain: Home
   news_title: News
+  fullname: '"Scientific and Production Company" HimHolodServis'
+  address: Moscow, 12 Kostiakov st., office 96
   search:
     button: Search
     site_search: "Search:"
