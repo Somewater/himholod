@@ -53,10 +53,12 @@ ActiveRecord::Schema.define(:version => 20130203163950) do
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
   create_table "feedbacks", :force => true do |t|
-    t.string "name"
-    t.string "email"
-    t.string "topic"
-    t.text   "body"
+    t.string   "name"
+    t.string   "email"
+    t.string   "topic"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "news", :force => true do |t|
