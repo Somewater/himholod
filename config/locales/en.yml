@@ -21,3 +21,12 @@ en:
   sections: Sections
   text_pages: Pages
   files: Files
+  feedback_form:
+    title: Feedback form
+    submit: Send
+    name_label: Your Name
+    email_label: Email
+    name_error: Enter your name
+    email_error: Enter your email
+    body_error: Enter message text
+    success_notice: Your message has been sent

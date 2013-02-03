@@ -2,6 +2,7 @@ Himholod::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :admin_users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  match "feedback/add(.:format)", :to => 'feedbacks#add', :as => 'feedback_add'
 
   scope "(:locale)", :locale => /ru|en|fr/ do
     resources :sections, :only => [:show]

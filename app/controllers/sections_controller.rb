@@ -9,6 +9,7 @@ class SectionsController < ApplicationController
       @news = News.order("date DESC")
       render 'news/index'
     else
+      @feedback_add_form = @section.feedback?
       # показать контент раздела
       if(@section.children.size > 0 || @section.text_pages.size > 1 || @section.ckeditor_assets.size > 0)
         render 'sections/show'

@@ -21,4 +21,14 @@
   sections: Разделы
   text_pages: Страницы
   files: Файлы
+  feedback_form:
+    title: Форма обратной связи
+    submit: Послать
+    name_label: Ваше имя
+    email_label: Email
+    name_error: Введите ваше имя
+    email_error: Введите ваш email
+    body_error: Введите текст сообщения
+    success_notice: Ваше сообщение успешно отправлено
+
 
