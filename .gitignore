@@ -7,3 +7,4 @@
 public/assets/*
 public/ckeditor_assets/*
 Gemfile.local*
+index/*

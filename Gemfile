@@ -37,3 +37,5 @@ gem "devise", "2.1"
 gem 'traco', '1.1.0'
 gem 'thin'
 gem 'pdf-reader'
+gem 'ferret', :platform => :ruby
+gem 'acts_as_ferret', '>= 0.5', :platform => :ruby
