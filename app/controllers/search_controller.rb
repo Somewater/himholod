@@ -88,7 +88,7 @@ class SearchController < ApplicationController
   end
 
   def search_words
-    @page = 0
+    @page_number = [(params[:page] || '1').to_i, 1].max - 1
     @query = params['words'] || params['wordsline']
     @query = @query.to_s.strip
     @words = @query.split.select{|w| w.size > 2}.map(&:strip)
@@ -107,7 +107,8 @@ class SearchController < ApplicationController
       words_query = @words.map{|w| w.to_s + '~'}.join(' OR ')
       query = ['title', 'body', 'description'].map{|field| "#{field}_#{I18n.locale}:(#{words_query})"  }.join(' OR ')
       @translations_quantity, @translations = \
-        ActsAsFerret.find_ids(query, INDEX_NAME, :limit => PAGE_SIZE, :offset => PAGE_SIZE * @page)
+        ActsAsFerret.find_ids(query, INDEX_NAME, :limit => PAGE_SIZE, :offset => PAGE_SIZE * @page_number)
+      @pages = (@translations_quantity.to_f / INDEX_NAME).ceil
 
       if(@translations_quantity == 0)
         flash.now[:notice] = I18n.t('search.empty_result')

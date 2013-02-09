@@ -5,21 +5,32 @@
     </form>
 </div>
 <p></p>
-<% @results_by_type.each do |type_name, results| %>
-    <div class="row">
-        <span class="headers1"><%= I18n.t(type_name) %></span>
-        <ol>
-            <% results.each_with_index do |result, index| %>
-                <li>
-                    <% each_with_borders(result.section_chain) do |section, index, last| %>
-                        <a href="<%= section_path(section) %>"><%= section.title %></a>
-                        <% unless last %><img src="/imp/bulletgradusnext.gif"><% end %>
-                    <% end %>
-                    <br>
-                    <a href="<%= result.path %>"><b><%= result.title %></b></a>
-                    <p><%= truncate(result.description, :length => 50) %></p>
-                </li>
+<% if @results_by_type %>
+    <% @results_by_type.each do |type_name, results| %>
+        <div class="row">
+            <span class="headers1"><%= I18n.t(type_name) %></span>
+            <ol>
+                <% results.each_with_index do |result, index| %>
+                    <li>
+                        <% each_with_borders(result.section_chain) do |section, index, last| %>
+                            <a href="<%= section_path(section) %>"><%= section.title %></a>
+                            <% unless last %><img src="/imp/bulletgradusnext.gif"><% end %>
+                        <% end %>
+                        <br>
+                        <a href="<%= result.path %>"><b><%= result.title %></b></a>
+                        <p><%= truncate(result.description, :length => 50) %></p>
+                    </li>
+                <% end %>
+            </ol>
+        </div>
+    <% end %>
+    <% if(@pages > 1) %>
+        <p>
+            <% (1.upto(@pages).each do |page| %>
+                <% if page != @page_number %><a href="<%= url_for_params({:page => page}) %>"><% end %>
+                <%= (page + 1).to_s %> &nbsp;
+                <% if page != @page_number %></a><% end %>
             <% end %>
-        </ol>
-    </div>
+        </p>
+    <% end %>
 <% end %>
