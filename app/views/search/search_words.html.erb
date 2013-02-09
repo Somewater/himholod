@@ -14,9 +14,8 @@
                     <li>
                         <% each_with_borders(result.section_chain) do |section, index, last| %>
                             <a href="<%= section_path(section) %>"><%= section.title %></a>
-                            <% unless last %><img src="/imp/bulletgradusnext.gif"><% end %>
+                            <img src="/imp/bulletgradusnext.gif">
                         <% end %>
-                        <br>
                         <a href="<%= result.path %>"><b><%= result.title %></b></a>
                         <p><%= truncate(result.description, :length => 150) %></p>
                     </li>
