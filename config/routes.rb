@@ -3,6 +3,8 @@ Himholod::Application.routes.draw do
   devise_for :admin_users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   match "feedback/add(.:format)", :to => 'feedbacks#add', :as => 'feedback_add'
+  match "pdf_viewer/*filepath", :to => "pdf_viewer#show", :as => 'pdf_viewer_show'
+  match "downloader/*filepath", :to => "pdf_viewer#download", :as => 'pdf_viewer_download'
 
   scope "(:locale)", :locale => /ru|en|fr/ do
     resources :sections, :only => [:show]

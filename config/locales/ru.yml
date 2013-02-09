@@ -32,5 +32,8 @@
     email_error: Введите ваш email
     body_error: Введите текст сообщения
     success_notice: Ваше сообщение успешно отправлено
+  popup:
+    download: Скачать
+    noembed: 'Ваш браузер не поддерживает просмотр PDF файлов, скачайте файл на компьютер и воспользуйтесь программой <a target="_parent" href="http://get.adobe.com/reader">Adobe Reader</a> для просмотра'
 
 

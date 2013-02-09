@@ -41,9 +41,10 @@
     <span class="headers1"><%= I18n.t('files') %></span>
     <ul>
         <% @section.ckeditor_assets.each do |asset| %>
-            <li><a href="<%= asset.url %>"><%= asset.title %></a> (<%= number_to_human_size(asset.data_file_size) %>)</li>
+            <li><a class="file" href="<%= asset.url %>"><%= asset.title %></a> (<%= number_to_human_size(asset.data_file_size) %>)</li>
         <% end %>
     </ul>
+    <%= render :partial => 'fancy_links'  %>
 <% end %>
 
 <% if @feedback_add_form %><%= render :partial => 'feedback_add_form' %><% end %>

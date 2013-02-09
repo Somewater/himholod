@@ -32,3 +32,6 @@ en:
     email_error: Enter your email
     body_error: Enter message text
     success_notice: Your message has been sent
+  popup:
+    download: Download
+    noembed: 'Your browser does not support viewing PDF files, download the file to your computer and use the program <a target="_parent" href="http://get.adobe.com/reader">Adobe Reader</a> to see'

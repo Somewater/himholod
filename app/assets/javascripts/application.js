@@ -12,11 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ./fancybox/jquery.fancybox
 //= #require_tree .
 //= #require ./bootstrap/bootstrap
 
 // MENU SCRIPT
 
+var persistmenu = null;
+var persisttype = null;
 function SwitchMenu(obj){
     if(document.getElementById){
         var el = document.getElementById(obj);
@@ -63,8 +66,8 @@ function savemenustate(){
 }
 
 function startup(){
-    var persistmenu="yes" //"yes" or "no". Make sure each SPAN content contains an incrementing ID starting at 1 (id="sub1", id="sub2", etc)
-    var persisttype="sitewide" //enter "sitewide" for menu to persist across site, "local" for this page only
+    persistmenu="yes" //"yes" or "no". Make sure each SPAN content contains an incrementing ID starting at 1 (id="sub1", id="sub2", etc)
+    persisttype="sitewide" //enter "sitewide" for menu to persist across site, "local" for this page only
 
     if (window.addEventListener)
         window.addEventListener("load", onloadfunction, false)
@@ -75,6 +78,12 @@ function startup(){
 
     if (persistmenu=="yes" && document.getElementById)
         window.onunload=savemenustate
+}
+
+function swfsVisibility(visible){
+    $('#flash-ice').toggle(visible);
+    $('#flash-top').toggle(visible);
+    $('#flash-bottom').toggle(visible);
 }
 
 startup();

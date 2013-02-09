@@ -1,0 +1,28 @@
+<script>
+    $download_trns = "<%= t('popup.download') %>";
+    $('.file').each(function(index, _file){
+        var file = $(_file);
+        var src = filepath = file.attr('href');
+        var filepath = "<%= pdf_viewer_download_path('%filepath%') %>".replace('%filepath%', src.substr(1));
+        if(src.substr(src.length - 4).toLowerCase() == '.pdf')
+            src = "<%= pdf_viewer_show_path('%filepath%') %>".replace('%filepath%', src.substr(1));
+        file.fancybox({
+            href: src,
+            type: 'iframe',
+            iframe:{preload:false},
+            fitToView	: false,
+            width		: '70%',
+            height		: '70%',
+            autoSize	: false,
+            closeClick	: false,
+            openEffect	: 'none',
+            closeEffect	: 'none',
+            beforeShow  : function(){
+                swfsVisibility(false);
+                $('#fancy-download-title').text($download_trns);
+                $('#fancy-download').attr('href', filepath);
+            },
+            beforeClose : function(){swfsVisibility(true)}
+        });
+    })
+</script>
