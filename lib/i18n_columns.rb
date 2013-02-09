@@ -34,6 +34,9 @@ module I18nColumns
           end
         end
       end
+      if defined?(ActsAsFerret)
+        self.acts_as_ferret :fields => [names.map{|n| LOCALES.map{|l| (n.to_s + '_' + l.to_s).to_sym } }.flatten]
+      end
     end
   end
 end
