@@ -17,7 +17,7 @@ class SearchController < ApplicationController
       unless @title
         @title =  case(@model)
                     when TextPage
-                      @model.section.title
+                      @model.title && @model.title.size > 2 ? @model.title : @model.section.title
                     else
                       @model.title # News, Ckeditor::AttachmentFile
                     end
