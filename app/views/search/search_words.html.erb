@@ -9,7 +9,7 @@
     <% @results_by_type.each do |type_name, results| %>
         <div class="row">
             <span class="headers1"><%= I18n.t(type_name) %></span>
-            <ol>
+            <ul>
                 <% results.each_with_index do |result, index| %>
                     <li>
                         <% each_with_borders(result.section_chain) do |section, index, last| %>
@@ -21,7 +21,7 @@
                         <p><%= truncate(result.description, :length => 150) %></p>
                     </li>
                 <% end %>
-            </ol>
+            </ul>
         </div>
     <% end %>
     <% if(@pages > 1) %>
