@@ -26,7 +26,7 @@
     <% end %>
     <% if(@pages > 1) %>
         <p>
-            <% (1.upto(@pages).each do |page| %>
+            <% 1.upto(@pages).each do |page| %>
                 <% if page != @page_number %><a href="<%= url_for_params({:page => page}) %>"><% end %>
                 <%= (page + 1).to_s %> &nbsp;
                 <% if page != @page_number %></a><% end %>
