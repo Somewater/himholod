@@ -43,7 +43,7 @@ class SearchController < ApplicationController
       unless @path
         @path = case(@model)
                   when TextPage
-                    @controller.text_page_path(@model.section)
+                    @controller.text_page_path(@model)
                   when News
                     @controller.news_path(@model)
                   when Ckeditor::AttachmentFile
