@@ -16,6 +16,8 @@ en:
     huge_result: Request satisfies most of the materials from the site, try to narrow down your search
     types:
       pages: Pages
+      news: News
+      files: Files
   locales:
     ru: Rus
     en: Eng

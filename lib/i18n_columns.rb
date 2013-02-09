@@ -25,6 +25,7 @@ module I18nColumns
 
   module Model
     def i18n_columns(*names)
+      params = names.last && names.last.is_a?(Hash) ? names.pop : {}
       names.each do |name|
         self.translates(name)
         self.attr_accessible(*LOCALES.map{|l| name.to_s + '_' + l })
@@ -33,9 +34,6 @@ module I18nColumns
             self.send (name.to_s + '_' + l + '=').to_sym, value
           end
         end
-      end
-      if defined?(ActsAsFerret)
-        self.acts_as_ferret :fields => [names.map{|n| LOCALES.map{|l| (n.to_s + '_' + l.to_s).to_sym } }.flatten]
       end
     end
   end

@@ -11,19 +11,13 @@
         <ol>
             <% results.each_with_index do |result, index| %>
                 <li>
-                    <% case result.model %>
-                    <% when TextPage %>
-                        <% each_with_borders(result.model.section.chain) do |section, index, last| %>
-                            <a href="<%= section_path(section) %>"><%= section.title %></a>
-                            <% unless last %><img src="/imp/bulletgradusnext.gif"><% end %>
-                        <% end %>
-                        <br>
-                        <a href="<%= result.path %>"><b><%= result.title %></b></a>
-                    <% when TextPage %>
-                        <a href="index.php?page=107" class="bs">10/02/2009 17:38:46&nbsp;&nbsp;<b>Крытая тренировочная площадка с искусственным льдом по ул. 25 сентября, г.Смоленск, 2008г.</b></a>
-                    <% else %>
-                        UNDEFINED TYPE
+                    <% each_with_borders(result.section_chain) do |section, index, last| %>
+                        <a href="<%= section_path(section) %>"><%= section.title %></a>
+                        <% unless last %><img src="/imp/bulletgradusnext.gif"><% end %>
                     <% end %>
+                    <br>
+                    <a href="<%= result.path %>"><b><%= result.title %></b></a>
+                    <p><%= truncate(result.description, :length => 50) %></p>
                 </li>
             <% end %>
         </ol>

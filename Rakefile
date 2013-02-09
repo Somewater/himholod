@@ -49,3 +49,9 @@ task :megadeploy => :environment do
   end
 end
 
+desc ""
+task :search => :environment do
+  t = Time.new
+  ActsAsFerret.rebuild_index(SearchController::INDEX_NAME)
+  puts "Completed in #{(Time.new - t)}"
+end

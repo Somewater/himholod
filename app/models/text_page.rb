@@ -1,7 +1,7 @@
 class TextPage < ActiveRecord::Base
 
   extend ::I18nColumns::Model
-  i18n_columns :title, :body
+  i18n_columns :title, :body, :ferret => true
 
   attr_accessible :name, :section_id
   belongs_to :section
