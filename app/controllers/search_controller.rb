@@ -31,7 +31,9 @@ class SearchController < ApplicationController
                          when Ckeditor::AttachmentFile
                           @model.description
                          else
-                          Nokogiri::HTML(@model.body).text # News, TextPage
+                          n = Nokogiri::HTML(@model.body)
+                          n.css('style,br').remove
+                          n.text.strip.gsub(/\s+/, ' ') # News, TextPage
                          end
       end
       @description
