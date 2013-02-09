@@ -101,14 +101,13 @@ class SearchController < ApplicationController
       # array of SearchResult
       @results = []
       @results_by_type = {}
-      #Product::Translation.where(['CONCAT(description,title) LIKE ("%?%")', word])
 
       translations = []
       words_query = @words.map{|w| w.to_s + '~'}.join(' OR ')
       query = ['title', 'body', 'description'].map{|field| "#{field}_#{I18n.locale}:(#{words_query})"  }.join(' OR ')
       @translations_quantity, @translations = \
         ActsAsFerret.find_ids(query, INDEX_NAME, :limit => PAGE_SIZE, :offset => PAGE_SIZE * @page_number)
-      @pages = (@translations_quantity.to_f / INDEX_NAME).ceil
+      @pages = (@translations_quantity.to_f / PAGE_SIZE).ceil
 
       if(@translations_quantity == 0)
         flash.now[:notice] = I18n.t('search.empty_result')
