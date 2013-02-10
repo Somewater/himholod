@@ -8,7 +8,7 @@ class PrintController < ApplicationController
     id = params[:id]
 
     if(type == PAGE)
-      @page = TextPage.find(id)
+      @page = TextPage.where(:id => params[:id]).first || TextPage.find_by_name(params[:id])
       if(@page)
         render :text => @page.body
         return
