@@ -105,7 +105,7 @@ class SearchController < ApplicationController
       @results_by_type = {}
 
       translations = []
-      words_query = @words.map{|w| w.to_s + '~ OR ' + w.to_s + '*'}.map{|q| "(#{q})" }.join(' OR ')
+      words_query = @words.map{|w| w.to_s + '~0.9 OR ' + w.to_s + '*'}.map{|q| "(#{q})" }.join(' OR ')
       query = ['title', 'body', 'description'].map{|field| "#{field}_#{I18n.locale}:(#{words_query})"  }.join(' OR ')
       @translations_quantity, @translations = \
         ActsAsFerret.find_ids(query, INDEX_NAME, :limit => PAGE_SIZE, :offset => PAGE_SIZE * @page_number)
