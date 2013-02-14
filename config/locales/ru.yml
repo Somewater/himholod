@@ -25,6 +25,7 @@
   sections: Разделы
   text_pages: Страницы
   files: Файлы
+  megabyte: МБ
   feedback_form:
     title: Форма обратной связи
     submit: Послать

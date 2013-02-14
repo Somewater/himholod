@@ -25,6 +25,7 @@ en:
   sections: Sections
   text_pages: Pages
   files: Files
+  megabyte: MB
   feedback_form:
     title: Feedback form
     submit: Send

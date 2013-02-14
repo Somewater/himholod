@@ -35,7 +35,8 @@ gem 'httparty', '0.8.1'
 gem "devise", "2.1"
 #gem 'globalize3', "0.2.0"
 gem 'traco', '1.1.0'
-gem 'thin'
+#gem 'thin'
+gem 'unicorn', '4.5.0'
 gem 'pdf-reader'
 gem 'ferret', :platform => :ruby
 gem 'acts_as_ferret', '>= 0.5', :platform => :ruby

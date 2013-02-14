@@ -3,16 +3,22 @@
     $('.file').each(function(index, _file){
         var file = $(_file);
         var src = filepath = file.attr('href');
-        var filepath = "<%= pdf_viewer_download_path('%filepath%') %>".replace('%filepath%', src.substr(1));
-        if(src.substr(src.length - 4).toLowerCase() == '.pdf')
-            src = "<%= pdf_viewer_show_path('%filepath%') %>".replace('%filepath%', src.substr(1));
+        var filepath = "<%= pdf_viewer_download_path('%filepath%', :locale => nil) %>".replace('%filepath%', src.substr(1));
+		var ext = filepath.substr(-3).toLowerCase();
+		var pdf = false;
+		if(!(ext == 'pdf' || ext == 'jpg' || ext == 'jpeg' || ext == 'png' || ext == 'tiff'))
+			return; 
+        if(src.substr(src.length - 4).toLowerCase() == '.pdf'){
+            src = "<%= pdf_viewer_show_path('%filepath%', :locale => nil) %>".replace('%filepath%', src.substr(1));
+			pdf = true;
+		}
         file.fancybox({
             href: src,
             type: 'iframe',
-            iframe:{preload:false},
+            iframe:{preload:false, scrolling : (pdf ? 'no' : 'auto')},
             fitToView	: false,
-            width		: '70%',
-            height		: '70%',
+            width		: '95%',
+            height		: '95%',
             autoSize	: false,
             closeClick	: false,
             openEffect	: 'none',

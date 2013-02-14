@@ -30,4 +30,8 @@ module ApplicationHelper
   def url_for_params(params)
     url_for(params.merge(params))
   end
+  
+  def human_file_size(bytes, options = {})
+	 [bytes.to_f / 1_048_576, 0.01].max.round(2).to_s + ' ' + I18n.t('megabyte')
+  end
 end
