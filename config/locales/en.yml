@@ -38,3 +38,7 @@ en:
   popup:
     download: Download
     noembed: 'Your browser does not support viewing PDF files, download the file to your computer and use the program <a target="_parent" href="http://get.adobe.com/reader">Adobe Reader</a> to see'
+  errors:
+    root_section_has_parent: The main section of the site should not have Parent
+    section_has_not_parent: Section should have Parent
+    section_parent_infinity_loop: "Cyclic connection between sections: %{message}"

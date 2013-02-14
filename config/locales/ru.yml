@@ -38,5 +38,7 @@
   popup:
     download: Скачать
     noembed: 'Ваш браузер не поддерживает просмотр PDF файлов, скачайте файл на компьютер и воспользуйтесь программой <a target="_parent" href="http://get.adobe.com/reader">Adobe Reader</a> для просмотра'
-
-
+  errors:
+    root_section_has_parent: Главный раздел сайта не должен иметь родительский раздел
+    section_has_not_parent: В разделе должен быть задан родительский раздел
+    section_parent_infinity_loop: "Циклические связи между разделами: %{message}"

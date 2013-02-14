@@ -17,7 +17,29 @@ class Section < ActiveRecord::Base
   has_many :text_pages
   has_many :ckeditor_assets, :class_name => 'Ckeditor::AttachmentFile'
 
-  validates :parent, :presence =>  { :unless => :main? }
+  #validates :parent, :presence =>  { :unless => :main? }, :if => :not_infinity_loop?
+  class SectinsValidator < ActiveModel::Validator
+    def validate(record)
+      if record.main?
+	    record.errors[:base] << I18n.t('errors.root_section_has_parent') if record.parent
+	  else
+	    unless record.parent
+		  record.errors[:base] << I18n.t('errors.section_has_not_parent') 
+	    else
+	      parents = []
+		  p = record.parent
+		  while p
+		    if parents.index(p.id)
+		      return record.errors[:base] << I18n.t('errors.section_parent_infinity_loop', :message => "#{record.pretty_name} <-> #{p.pretty_name}")
+  		    end
+  		    parents << p.id
+  		    p = p.parent
+  		  end
+  	    end
+      end
+    end
+  end
+  validates_with SectinsValidator
   validates :name, :presence => true, :format => /^[a-z][a-z0-9\-]+$/ , :unless => :main?
 
   def self.main
@@ -47,9 +69,12 @@ class Section < ActiveRecord::Base
   def parents
     result = []
     p = self.parent
+	counter = 0
     while(p)
       result.unshift(p)
       p = p.parent
+	  counter += 1
+	  return result if counter > 10
     end
     result
   end
@@ -58,9 +83,12 @@ class Section < ActiveRecord::Base
     # цепочка от родителей до указанной секции (исключая главную секцию)
     result = [self]
     p = self.parent
+	counter = 0
     while(p && (main || !p.main?))
       result.unshift(p)
       p = p.parent
+	  counter += 1
+	  return result if counter > 10
     end
     result
   end
