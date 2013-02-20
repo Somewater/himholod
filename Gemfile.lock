@@ -206,6 +206,7 @@ DEPENDENCIES
   rails_admin (= 0.3.0)
   sass-rails (~> 3.2.3)
   therubyracer
+  thin
   traco (= 1.1.0)
   uglifier (>= 1.0.3)
   unicorn (= 4.5.0)
