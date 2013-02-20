@@ -7,7 +7,7 @@ class News < ActiveRecord::Base
   before_save :set_date
 
   validates :date, :presence => true
-  validates :name, :format => /^[a-z][a-z0-9\-]+$/
+  validates :name, :format => /^([a-z][a-z0-9\-]+|)$/
 
   def self.top
     self.all.take(5)
