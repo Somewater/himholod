@@ -10,7 +10,7 @@ class News < ActiveRecord::Base
   validates :name, :format => /^([a-z][a-z0-9\-]+|)$/
 
   def self.top
-    self.all.take(5)
+    self.order("date DESC").take(5)
   end
 
   def to_param
