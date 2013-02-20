@@ -1,12 +1,14 @@
 class SectionsController < ApplicationController
   def show
-    @section = (params[:id] ? Section.find_by_name(params[:id]) : nil)
+    @section = (params[:id] || params[:section_id] ? Section.find_by_name(params[:id] || params[:section_id]) : nil)
+    @page_number = [(params[:page] || '1').to_i, 1].max - 1
     if !@section
       render 'main_page/not_found'
     elsif @section.main?
       redirect_to root_path
     elsif @section.name == Section::NEWS_NAME
-      @news = News.order("date DESC")
+      @pages = (News.count.to_f / NewsController::PER_PAGE).ceil
+      @news = News.order("date DESC").limit(NewsController::PER_PAGE).offset(@page_number * NewsController::PER_PAGE)
       render 'news/index'
     else
       @feedback_add_form = @section.feedback?

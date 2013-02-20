@@ -5,3 +5,13 @@
     </a>
     <p></p>
 <% end %>
+<% if(@pages && @pages > 1) %>
+    <p style="font-size: 16px; font-family:'Times New Roman';">
+        <% 0.upto(@pages - 1).each do |page| %>
+            <% if page != @page_number %><a href="<%= url_for_params({:page => (page + 1)}) %>"><% end %>
+            <%= (page + 1).to_s %>
+            <% if page != @page_number %></a><% end %>
+            &nbsp;
+        <% end %>
+    </p>
+<% end %>
