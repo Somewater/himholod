@@ -18,7 +18,7 @@
         <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#525252" height="27">
             <tbody><tr style="height: 27px; max-height: 27px;">
                 <td width="116" style="height: 27px"><a href="/"><span class="toplink"><%= I18n.t('onmain') %></span>
-                    <img width="116" border="0" height="27" alt="На главную" src="/imp/onmain.gif"></a></td>
+                    <img width="116" border="0" height="27" alt="На главную" src="/imp/onmain_img.gif"></a></td>
                 <td width="50">&nbsp;</td>
                 <td width="240">
                     <div style="position: relative;">
@@ -32,7 +32,7 @@
                            lang2_url = url_for_params(:locale => :en)
                            lang2_s = I18n.locale.to_s == 'en' ? bold : ''
                         %>
-                        <a href="<%= lang1_url %>"><span class="lang lang1"<%= lang1_s %>><%= lang1 %></span><img width="74" border="0" height="27" alt="" src="/imp/rus.gif"></a><a href="<%= lang2_url %>"><span class="lang lang2"<%= lang2_s %>><%= lang2 %></span><img width="101" border="0" height="27" alt="" src="/imp/eng.gif"></a>
+                        <a href="<%= lang1_url %>"><span class="lang lang1"<%= lang1_s %>><%= lang1 %></span><img width="74" border="0" height="27" alt="" src="/imp/rus_img.gif"></a><a href="<%= lang2_url %>"><span class="lang lang2"<%= lang2_s %>><%= lang2 %></span><img width="101" border="0" height="27" alt="" src="/imp/eng_img.gif"></a>
                     </div>
                 </td>
                 <td>&nbsp;</td>
