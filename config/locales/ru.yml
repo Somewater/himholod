@@ -42,3 +42,10 @@
     root_section_has_parent: Главный раздел сайта не должен иметь родительский раздел
     section_has_not_parent: В разделе должен быть задан родительский раздел
     section_parent_infinity_loop: "Циклические связи между разделами: %{message}"
+  admin:
+    actions:
+      stat_panel:
+        title: Сохранить БД
+        menu: Сохранить БД
+        breadcrumb: Сохранить БД
+        database_dump: Загрузить копию базы данных

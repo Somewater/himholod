@@ -42,3 +42,10 @@ en:
     root_section_has_parent: The main section of the site should not have Parent
     section_has_not_parent: Section should have Parent
     section_parent_infinity_loop: "Cyclic connection between sections: %{message}"
+  admin:
+    actions:
+      stat_panel:
+        title: Save DB
+        menu: Save DB
+        breadcrumb: Save DB
+        database_dump: Download Database copy
