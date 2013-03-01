@@ -4,6 +4,7 @@ class Section < ActiveRecord::Base
   NEWS_NAME = 'news'
   FEEDBACK_NAME = 'feedback'
   ADDRESS_NAME = 'address'
+  SITEMAP_NAME = 'sitemap'
   ORDER = "weight ASC"
   CONDITIONS = 'visible = TRUE'
 

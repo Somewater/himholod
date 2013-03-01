@@ -15,6 +15,8 @@ Himholod::Application.routes.draw do
     match 'print/:type/:id', :to => 'print#show', :as => 'print'
     match 'sitemap.xml' => 'sitemaps#sitemap'
     match "search/(:page)", :to => 'search#search_words'
+    match "sitemap", :to => 'sitemap#index', :as => 'sitemap'
+
     root :to => 'main_page#index'
     match 'not_found' => 'main_page#not_found', :as => 'not_found'
     match '*paths' => 'main_page#not_found'

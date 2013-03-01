@@ -10,6 +10,8 @@ class SectionsController < ApplicationController
       @pages = (News.count.to_f / NewsController::PER_PAGE).ceil
       @news = News.order("date DESC").limit(NewsController::PER_PAGE).offset(@page_number * NewsController::PER_PAGE)
       render 'news/index'
+    elsif @section.name == Section::SITEMAP_NAME
+      redirect_to sitemap_path
     else
       @feedback_add_form = @section.feedback?
       @yandex_map = @section.address?

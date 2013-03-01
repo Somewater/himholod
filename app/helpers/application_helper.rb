@@ -34,4 +34,19 @@ module ApplicationHelper
   def human_file_size(bytes, options = {})
 	 [bytes.to_f / 1_048_576, 0.01].max.round(2).to_s + ' ' + I18n.t('megabyte')
   end
+
+  def sitemap_html(section)
+    result = "<a href='" + section_path(section) + "'>" + section.title + "</a>"
+    children = section.children
+    unless children.blank?
+      result << "<ul>"
+      children.each do |child|
+        result << "<li>"
+        result << sitemap_html(child)
+        result << "</li>"
+      end
+      result << "</ul>"
+    end
+    result
+  end
 end

@@ -325,3 +325,16 @@ feedback:
   weight: 30
   title_en: Feedback
   title_ru: Обратная связь
+
+####################
+#
+#
+#
+####################
+sitemap:
+  parent: main
+  name: 'sitemap'
+  weight: 0
+  title_en: Site map
+  title_ru: Карта сайта
+  visible: false
