@@ -102,12 +102,12 @@ ActiveRecord::Schema.define(:version => 20130203163950) do
   create_table "text_pages", :force => true do |t|
     t.string   "name"
     t.integer  "section_id"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "title_ru"
     t.string   "title_en"
-    t.text     "body_ru",    :limit => 16777215
-    t.text     "body_en",    :limit => 16777215
+    t.text     "body_ru"
+    t.text     "body_en"
   end
 
   add_index "text_pages", ["name"], :name => "index_text_pages_on_name", :unique => true

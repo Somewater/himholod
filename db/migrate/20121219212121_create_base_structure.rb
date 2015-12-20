@@ -61,7 +61,7 @@ class CreateBaseStructure < ActiveRecord::Migration
 	  create_table "text_pages", :force => true do |t|
 		t.string   "name"
 		t.string   "title"
-		t.text     "body", :limit => 64.kilobytes + 1
+		t.text     "body"
 		t.integer  "section_id"
 		t.datetime "created_at", :null => false
 		t.datetime "updated_at", :null => false

@@ -5,7 +5,7 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+gem 'pg'
 
 
 # Gems used only for assets and not required
@@ -18,6 +18,10 @@ group :assets do
   gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development do
+  gem 'pry'
 end
 
 gem 'rails_admin', "0.3.0"
@@ -40,3 +44,6 @@ gem 'unicorn', '4.5.0', :platform => :ruby
 gem 'pdf-reader'
 gem 'ferret', :platform => :ruby
 gem 'acts_as_ferret', '>= 0.5', :platform => :ruby
+
+gem 'test-unit'
+gem 'awesome_print'

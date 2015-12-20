@@ -1,32 +1,29 @@
 development:
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   reconnect: true
   database: himholod
   pool: 5
   username: himholod
   password: dSL8GtsrSJr
-  #socket: /var/run/mysqld/mysqld.sock
   host: 127.0.0.1
 
 test:
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   reconnect: true
   database: himholod_test
   pool: 5
   username: himholod
   password: dSL8GtsrSJr
-  #socket: /var/run/mysqld/mysqld.sock
   host: 127.0.0.1
 
 production:
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   reconnect: true
   database: himholod
   pool: 5
   username: himholod
   password: dSL8GtsrSJr
-  #socket: /var/run/mysqld/mysqld.sock
   host: 127.0.0.1
