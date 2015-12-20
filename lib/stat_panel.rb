@@ -16,7 +16,7 @@ require 'rails_admin/config/actions/base'
             if params[:task] == 'dbdump'
               database_conf = Rails.configuration.database_configuration[Rails.env]
               Cocaine::CommandLine.path = Rails.root.to_s
-              content = `mysqldump -u #{database_conf['username']} -p#{database_conf['password']} --databases #{database_conf['database']} | gzip -f`
+              content = `pg_dump -U database_conf['username'] -h localhost database_conf['database'] | gzip -f`
               t = Time.new
               response.headers['Content-Disposition'] = "attachment; filename=\"dbdump_#{(t.month)}_#{t.day}.sql.gz\""
               render :text => content, :content_type => 'application/x-gzip'
