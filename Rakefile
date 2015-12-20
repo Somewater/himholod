@@ -53,7 +53,7 @@ end
 desc "rebuild search index"
 task :search => :environment do
   # crontask
-  # 30 1 * * *  cd /srv/www/himholod  && RAILS_ENV=production /usr/local/bin/rake search >> /srv/www/himholod/log/cron.log 2>> /srv/www/himholod/log/cron_error.log
+  # 30 1 * * *  cd /home/pav/himholod/current  && RAILS_ENV=production /usr/local/bin/rake search >> /home/pav/himholod/current/log/cron.log 2>> /home/pav/himholod/current/log/cron_error.log
   t = Time.new
   Encoding.default_external = Encoding::UTF_8
   Encoding.default_internal = Encoding::UTF_8

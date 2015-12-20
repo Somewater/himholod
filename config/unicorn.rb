@@ -21,7 +21,7 @@ worker_processes 2
 
 # Help ensure your application will always spawn in the symlinked
 # "current" directory that Capistrano sets up.
-APP_PATH = "/srv/www/himholod"
+APP_PATH = "/home/pav/himholod/current"
 working_directory APP_PATH # available in 0.94.0+
 
 # listen on both a Unix domain socket and a TCP port,
